@@ -1,8 +1,8 @@
 .PHONY: dirs clean stat
 
-TEST = src/hello.h
+SRC = src/hello.h
 
-SRC = test/ut_hello.h
+TEST = test/ut_hello.h
 
 all: dirs ut_all
 
