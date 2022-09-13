@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include "ut_point.h"
 
 int main(int argc, char **argv)
 {
