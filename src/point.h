@@ -11,6 +11,11 @@ public:
         _y = y;
     }
 
+    bool operator==(Point other)
+    {
+        return _x == other.getX() && _y == other.getY();
+    }
+
     double getX()
     {
         return _x;
