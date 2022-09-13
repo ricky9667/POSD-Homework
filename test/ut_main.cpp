@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 
-#include "ut_hello.h"
 
 int main(int argc, char **argv)
 {
