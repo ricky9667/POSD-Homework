@@ -22,6 +22,8 @@ public:
         _y = y;
     }
 
+    ~Point() {}
+
     bool operator==(Point &other)
     {
         return _x == other.x() && _y == other.y();
