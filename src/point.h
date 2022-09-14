@@ -22,15 +22,15 @@ public:
 
     bool operator==(Point &other)
     {
-        return _x == other.getX() && _y == other.getY();
+        return _x == other.x() && _y == other.y();
     }
 
-    double getX()
+    double x()
     {
         return _x;
     }
 
-    double getY()
+    double y()
     {
         return _y;
     }
