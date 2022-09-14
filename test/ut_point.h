@@ -16,3 +16,10 @@ TEST(PointTest, testOperatorEqual)
     ASSERT_TRUE(p == p1);
     ASSERT_FALSE(p == p2);
 }
+
+TEST(PointTest, testInfo)
+{
+    Point p(-4.586, -3.471);
+    
+    ASSERT_EQ("-4.59, -3.47", p->info());
+}
