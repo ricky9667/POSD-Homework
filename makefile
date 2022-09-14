@@ -1,8 +1,8 @@
 .PHONY: dirs clean stat
 
-SRC = src/point.h
+SRC = src/point.h src/two_dimensional_vector.h
 
-TEST = test/ut_point.h
+TEST = test/ut_point.h test/ut_two_dimensional_vector.h
 
 all: dirs ut_all
 
