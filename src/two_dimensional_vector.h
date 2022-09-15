@@ -9,12 +9,23 @@ private:
     Point *_b;
 
 public:
-    TwoDimensionalVector(Point *a, Point *b) {}
+    TwoDimensionalVector(Point *a, Point *b) 
+    {
+        _a = a;
+        _b = b;
+    }
+
     ~TwoDimensionalVector() {}
 
-    Point *a() {}
+    Point *a() 
+    {
+        return _a;
+    }
 
-    Point *b() {}
+    Point *b() 
+    {
+        return _b;
+    }
 
     double length() {}
 
