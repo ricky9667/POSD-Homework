@@ -44,3 +44,12 @@ TEST(TwoDimensionalVectorTest, testVectorCross)
     ASSERT_NEAR(10.0368, vector1->cross(vector2), 0.01);
 }
 
+TEST(TwoDimensionalVectorTest, testVectorInfo)
+{
+    Point *a = new Point(-8.42, 3.42);
+    Point *b = new Point(-3.38, 4.3);
+    TwoDimensionalVector *vector = new TwoDimensionalVector(a, b);
+    
+    ASSERT_EQ("Vector ((-8.42, 3.42), (-3.38, 4.30))", vector->info());
+}
+
