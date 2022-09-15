@@ -27,7 +27,12 @@ public:
         return _b;
     }
 
-    double length() {}
+    double length() 
+    {
+        double diffX = _a->x() - _b->x();
+        double diffY = _a->y() - _b->y();
+        return diffX * diffX + diffY * diffY;
+    }
 
     double dot(TwoDimensionalVector *vec) {}
 
