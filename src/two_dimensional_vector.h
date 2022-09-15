@@ -15,7 +15,16 @@ public:
         _b = b;
     }
 
-    ~TwoDimensionalVector() {}
+    ~TwoDimensionalVector() 
+    {
+        if (_a != nullptr) 
+            delete[] _a;
+        if (_b != nullptr)
+            delete[] _b;
+
+        _a = nullptr;
+        _b = nullptr;
+    }
 
     Point *a() 
     {
