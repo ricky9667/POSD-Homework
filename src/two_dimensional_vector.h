@@ -61,5 +61,8 @@ public:
         return diffX1 * diffY2 - diffY1 * diffX2;
     }
 
-    std::string info() {}
+    std::string info() 
+    {
+        return "Vector (" + _a->info() + ", " + _b->info() + ")";
+    }
 };
