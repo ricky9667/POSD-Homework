@@ -20,3 +20,15 @@ TEST(TwoDimensionalVectorTest, testVectorLength)
     ASSERT_NEAR(26.176, vector->length(), 0.01);
 }
 
+TEST(TwoDimensionalVectorTest, testVectorDot)
+{
+    Point *a = new Point(-8.42, 3.42);
+    Point *b = new Point(-3.38, 4.3);
+    TwoDimensionalVector *vector1 = new TwoDimensionalVector(a, b);
+    Point *c = new Point(-2.48, 2.43);
+    Point *d = new Point(-8.33, 3.4);
+    TwoDimensionalVector *vector2 = new TwoDimensionalVector(c, d);
+
+    ASSERT_NEAR(-28.6304, vector1->dot(vector2), 0.01);
+}
+
