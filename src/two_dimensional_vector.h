@@ -52,7 +52,14 @@ public:
         return diffX1 * diffX2 + diffY1 * diffY2;
     }
 
-    double cross(TwoDimensionalVector *vec) {}
+    double cross(TwoDimensionalVector *vector)
+    {
+        double diffX1 = _a->x() - _b->x();
+        double diffY1 = _a->y() - _b->y();
+        double diffX2 = vector->a()->x() - vector->b()->x();
+        double diffY2 = vector->a()->y() - vector->b()->y();
+        return diffX1 * diffY2 - diffY1 * diffX2;
+    }
 
     std::string info() {}
 };
