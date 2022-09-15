@@ -11,3 +11,12 @@ TEST(TwoDimensionalVectorTest, testVectorGetters)
     ASSERT_EQ(b, vector.b());
 }
 
+TEST(TwoDimensionalVectorTest, testVectorLength)
+{
+    Point *a = new Point(-8.42, 3.42);
+    Point *b = new Point(-3.38, 4.3);
+    TwoDimensionalVector vector(a, b);
+
+    ASSERT_NEAR(26.176, vector.length(), 0.01);
+}
+
