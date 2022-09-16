@@ -29,7 +29,7 @@ TEST(TwoDimensionalVectorTest, testVectorDot)
     Point *d = new Point(-8.33, 3.4);
     TwoDimensionalVector *vector2 = new TwoDimensionalVector(c, d);
 
-    ASSERT_NEAR(-28.6304, vector1->dot(vector2), 0.01);
+    ASSERT_NEAR(-28.6304, vector1->dot(vector2), 0.001);
 }
 
 TEST(TwoDimensionalVectorTest, testVectorCross)
@@ -41,7 +41,7 @@ TEST(TwoDimensionalVectorTest, testVectorCross)
     Point *d = new Point(-8.33, 3.4);
     TwoDimensionalVector *vector2 = new TwoDimensionalVector(c, d);
 
-    ASSERT_NEAR(10.0368, vector1->cross(vector2), 0.01);
+    ASSERT_NEAR(10.0368, vector1->cross(vector2), 0.001);
 }
 
 TEST(TwoDimensionalVectorTest, testVectorInfo)
