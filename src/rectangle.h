@@ -38,10 +38,19 @@ public:
         return _widthVec->length();
     }
 
-    double area() override {}
+    double area() override 
+    {
+        return _lengthVec->length() * _widthVec->length();
+    }
 
-    double perimeter() override {}
+    double perimeter() override
+    {
+       return 2 * (_lengthVec->length() + _widthVec->length()); 
+    }
 
-    std::string info() override {}
+    std::string info() override
+    {
+        return "Rectangle (" + _lengthVec->info() + ", " + _widthVec->info() + ")";
+    }
 };
 
