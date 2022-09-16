@@ -28,9 +28,15 @@ public:
         _widthVec = nullptr;
     }
 
-    double length() {}
+    double length() 
+    {
+        return _lengthVec->length();
+    }
 
-    double width() {}
+    double width() 
+    {
+        return _widthVec->length();
+    }
 
     double area() override {}
 
