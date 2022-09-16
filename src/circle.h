@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <cmath>
 #include "two_dimensional_vector.h"
@@ -11,15 +12,38 @@ private:
     TwoDimensionalVector *_radiusVec;
 
 public:
-    Circle(TwoDimensionalVector *radiusVec) {}
-    ~Circle() {}
+    Circle(TwoDimensionalVector *radiusVec) 
+    {
+        _radiusVec = radiusVec;
+    }
 
-    double radius() const {}
+    ~Circle() 
+    {
+        if (_radiusVec != nullptr)
+            delete[] _radiusVec;
 
-    double area() const override {}
+        _radiusVec = nullptr;
+    }
 
-    double perimeter() const override {}
+    double radius() 
+    {
+        return _radiusVec->length();
+    }
 
-    std::string info() const override {}
+    double area() override
+    {
+        double radius = _radiusVec->length();
+        return M_PI * radius * radius;
+    }
+
+    double perimeter() override
+    {
+        return 2.0 * M_PI * _radiusVec->length();
+    }
+
+    std::string info() override
+    {
+        return "Circle (" + _radiusVec->info() + ")";
+    }
 };
 
