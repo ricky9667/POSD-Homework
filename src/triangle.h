@@ -28,7 +28,10 @@ public:
         _v2 = nullptr;
     }
 
-    double area() override {}
+    double area() override
+    {
+        return _v1->length() * _v2->length() / 2.0;
+    }
 
     double perimeter() override {}
 
