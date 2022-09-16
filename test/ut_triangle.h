@@ -34,3 +34,10 @@ TEST(TriangleTest, testTriangleInfo)
     ASSERT_EQ(expectedInfo, triangle->info());
 }
 
+TEST(TriangleTest, testTriangleParallel)
+{
+    TwoDimensionalVector *a = new TwoDimensionalVector(new Point(0, 0), new Point(3, 1));
+    TwoDimensionalVector *b = new TwoDimensionalVector(new Point(0, 0), new Point(6, 2));
+    
+    ASSERT_ANY_THROW(new Triangle(a, b));
+}

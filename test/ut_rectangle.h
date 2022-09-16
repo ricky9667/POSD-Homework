@@ -41,3 +41,10 @@ TEST(RectangleTest, testRectangleInfo)
     ASSERT_EQ(expectedInfo, rectangle->info());
 }
 
+TEST(RectangleTest, testRectangleNotOrthogonal)
+{
+    TwoDimensionalVector *lengthVector = new TwoDimensionalVector(new Point(-2, 1), new Point(-2, 5));
+    TwoDimensionalVector *widthVector = new TwoDimensionalVector(new Point(-2, 1), new Point(-7, 2));
+
+    ASSERT_ANY_THROW(new Rectangle(lengthVector, widthVector));
+}
