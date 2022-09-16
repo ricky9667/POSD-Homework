@@ -11,3 +11,14 @@ TEST(TriangleTest, testTriangleArea)
 
     ASSERT_NEAR(6, triangle->area(), 0.001);
 }
+
+TEST(TriangleTest, testTrianglePerimeter)
+{
+    Triangle *triangle = new Triangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(3, 0)),
+        new TwoDimensionalVector(new Point(3, 4), new Point(3, 0))
+    );
+
+    ASSERT_NEAR(12, triangle->perimeter(), 0.001);
+}
+
