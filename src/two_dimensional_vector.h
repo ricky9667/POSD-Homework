@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include "point.h"
 
 class TwoDimensionalVector
@@ -40,7 +41,7 @@ public:
     {
         double diffX = _a->x() - _b->x();
         double diffY = _a->y() - _b->y();
-        return diffX * diffX + diffY * diffY;
+        return sqrt(diffX * diffX + diffY * diffY);
     }
 
     double dot(TwoDimensionalVector *vector)

@@ -17,7 +17,7 @@ TEST(TwoDimensionalVectorTest, testVectorLength)
     Point *b = new Point(-3.38, 4.3);
     TwoDimensionalVector *vector = new TwoDimensionalVector(a, b);
 
-    ASSERT_NEAR(26.176, vector->length(), 0.01);
+    ASSERT_NEAR(5.116, vector->length(), 0.001);
 }
 
 TEST(TwoDimensionalVectorTest, testVectorDot)
