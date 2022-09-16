@@ -13,6 +13,9 @@ private:
 public:
     Rectangle(TwoDimensionalVector *lengthVec, TwoDimensionalVector *widthVec) 
     {
+        if (lengthVec->dot(widthVec) != 0)
+            throw std::string("Cannot initialize Rectangle without orthogonal vectors.");
+
         _lengthVec = lengthVec;
         _widthVec = widthVec;
     }

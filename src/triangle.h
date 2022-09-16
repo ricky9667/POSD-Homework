@@ -14,6 +14,9 @@ private:
 public:
     Triangle(TwoDimensionalVector *v1, TwoDimensionalVector *v2)
     {
+        if (v1->cross(v2) == 0)
+            throw std::string("Cannot initialize triangle with parallel vectors.");
+        
         _v1 = v1;
         _v2 = v2;
     }
