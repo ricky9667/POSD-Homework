@@ -42,6 +42,9 @@ public:
         return height + width + side;
     }
 
-    std::string info() override {}
+    std::string info() override
+    {
+        return "Triangle (" + _v1->info() + ", " + _v2->info() + ")";
+    }
 };
 
