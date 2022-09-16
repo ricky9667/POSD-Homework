@@ -4,6 +4,7 @@
 #include "ut_two_dimensional_vector.h"
 #include "ut_triangle.h"
 #include "ut_rectangle.h"
+#include "ut_circle.h"
 
 int main(int argc, char **argv)
 {
