@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <cmath>
 #include "shape.h"
 #include "two_dimensional_vector.h"
 
@@ -33,7 +34,13 @@ public:
         return _v1->length() * _v2->length() / 2.0;
     }
 
-    double perimeter() override {}
+    double perimeter() override
+    {
+        double height = _v1->length();
+        double width = _v2->length();
+        double side = sqrt(height * height + width * width);
+        return height + width + side;
+    }
 
     std::string info() override {}
 };
