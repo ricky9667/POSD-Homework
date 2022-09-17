@@ -44,11 +44,10 @@ public:
         double height = _v1->length();
         double width = _v2->length();
 
-        double v1_x = _v1->a()->x() - _v1->b()->x();
-        double v1_y = _v1->a()->y() - _v1->b()->y();
-        double v2_x = _v2->a()->x() - _v2->b()->x();
-        double v2_y = _v2->a()->y() - _v2->b()->y();
-        double side = sqrt((v1_x - v2_x) * (v1_x - v2_x) + (v1_y - v2_y) * (v1_y - v2_y));
+        double cos = _cos();
+        if (_v1->a() == _v2->b() || _v1->b() == _v2->a())
+            cos = (-1) * cos;
+        double side = sqrt(height * height + width * width - 2 * height * width * cos);
 
         return height + width + side;
     }
