@@ -6,6 +6,9 @@ TEST = test/ut_point.h test/ut_two_dimensional_vector.h test/ut_triangle.h test/
 
 all: dirs ut_all
 
+test: dirs ut_all
+	bin/ut_all
+
 ut_all: test/ut_main.cpp $(TEST) $(SRC)
 	g++ -std=c++17 -Wfatal-errors -Wall test/ut_main.cpp -o bin/ut_all -lgtest -lpthread
 
