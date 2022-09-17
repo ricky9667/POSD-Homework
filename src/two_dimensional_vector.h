@@ -6,15 +6,11 @@
 class TwoDimensionalVector
 {
 private:
-    Point *_a;
-    Point *_b;
+    const Point *_a;
+    const Point *_b;
 
 public:
-    TwoDimensionalVector(Point *a, Point *b) 
-    {
-        _a = a;
-        _b = b;
-    }
+    TwoDimensionalVector(Point *a, Point *b): _a{a}, _b{b} {}
 
     ~TwoDimensionalVector() 
     {
@@ -27,24 +23,24 @@ public:
         _b = nullptr;
     }
 
-    Point *a() 
+    const Point *a() const
     {
         return _a;
     }
 
-    Point *b() 
+    const Point *b() const
     {
         return _b;
     }
 
-    double length() 
+    const double length() const
     {
         double diffX = _a->x() - _b->x();
         double diffY = _a->y() - _b->y();
         return sqrt(diffX * diffX + diffY * diffY);
     }
 
-    double dot(TwoDimensionalVector *vector)
+    const double dot(TwoDimensionalVector *vector) const
     {
         double diffX1 = _a->x() - _b->x();
         double diffY1 = _a->y() - _b->y();
@@ -53,7 +49,7 @@ public:
         return diffX1 * diffX2 + diffY1 * diffY2;
     }
 
-    double cross(TwoDimensionalVector *vector)
+    const double cross(TwoDimensionalVector *vector) const
     {
         double diffX1 = _a->x() - _b->x();
         double diffY1 = _a->y() - _b->y();
@@ -62,7 +58,7 @@ public:
         return diffX1 * diffY2 - diffY1 * diffX2;
     }
 
-    std::string info() 
+    const std::string info() const
     {
         return "Vector (" + _a->info() + ", " + _b->info() + ")";
     }

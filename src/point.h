@@ -5,10 +5,10 @@
 class Point
 {
 private:
-    double _x;
-    double _y;
+    const double _x;
+    const double _y;
 
-    std::string doubleToString(double value, int precision)
+    const std::string doubleToString(double value, int precision) const 
     {
         std::stringstream stream;
         stream << std::fixed << std::setprecision(precision) << value;
@@ -16,30 +16,26 @@ private:
     }
 
 public:
-    Point(double x, double y)
-    {
-        _x = x;
-        _y = y;
-    }
+    Point(const double x, const double y) : _x{x}, _y{y} {}
 
     ~Point() {}
 
-    bool operator==(Point &other)
+    const bool operator==(const Point &other) const
     {
         return _x == other.x() && _y == other.y();
     }
 
-    double x()
+    const double x() const
     {
         return _x;
     }
 
-    double y()
+    const double y() const
     {
         return _y;
     }
 
-    std::string info() 
+    const std::string info() const
     {
         std::string strX = doubleToString(_x, 2);
         std::string strY = doubleToString(_y, 2);
