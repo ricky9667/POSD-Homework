@@ -15,8 +15,11 @@ public:
     Triangle(TwoDimensionalVector *v1, TwoDimensionalVector *v2)
     {
         if (v1->cross(v2) == 0)
-            throw std::string("Cannot initialize triangle with parallel vectors.");
-        
+            throw std::string("Cannot initialize Triangle with parallel vectors.");
+
+        if (!v1->isConnected(v2))
+            throw std::string("Cannot initialize Triangle with disconnected vectors.");
+
         _v1 = v1;
         _v2 = v2;
     }

@@ -16,6 +16,9 @@ public:
         if (lengthVec->dot(widthVec) != 0)
             throw std::string("Cannot initialize Rectangle without orthogonal vectors.");
 
+        if (!lengthVec->isConnected(widthVec))
+            throw std::string("Cannot initialized Rectangle with disconnected vectors.");
+
         _lengthVec = lengthVec;
         _widthVec = widthVec;
     }

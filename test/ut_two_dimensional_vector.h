@@ -53,3 +53,18 @@ TEST(TwoDimensionalVectorTest, testVectorInfo)
     ASSERT_EQ("Vector ((-8.42, 3.42), (-3.38, 4.30))", vector->info());
 }
 
+TEST(TwoDimensionalVectorTest, testVectorIsConnected)
+{
+    Point *a = new Point(-8.42, 3.42);
+    Point *b = new Point(-3.38, 4.3);
+    Point *c = new Point(-2.48, 7.87);
+    Point *d = new Point(-8.33, 9.87);
+    TwoDimensionalVector *vector1 = new TwoDimensionalVector(a, b);
+    TwoDimensionalVector *vector2 = new TwoDimensionalVector(a, c);
+    TwoDimensionalVector *vector3 = new TwoDimensionalVector(c, d);
+    
+    ASSERT_TRUE(vector1->isConnected(vector2));
+    ASSERT_FALSE(vector1->isConnected(vector3));
+}
+
+

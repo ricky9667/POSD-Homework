@@ -23,6 +23,11 @@ public:
         return _b;
     }
 
+    const bool isConnected(TwoDimensionalVector *other) const
+    {
+        return *_a == *(other->a()) || *_a == *(other->b()) || *_b == *(other->a()) || *_b == *(other->b());
+    }
+
     const double length() const
     {
         double diffX = _a->x() - _b->x();
