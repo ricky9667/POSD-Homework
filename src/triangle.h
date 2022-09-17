@@ -11,6 +11,16 @@ private:
     TwoDimensionalVector *_v1;
     TwoDimensionalVector *_v2;
 
+    const double _cos() const
+    {
+        return _v1->dot(_v2) / (_v1->length() * _v2->length());
+    }
+
+    const double _sin() const
+    {
+        return sqrt(1 - _cos() * _cos());
+    }
+
 public:
     Triangle(TwoDimensionalVector *v1, TwoDimensionalVector *v2)
     {
@@ -26,14 +36,14 @@ public:
 
     double area() override
     {
-        return _v1->length() * _v2->length() / 2.0;
+        return _v1->length() * _v2->length() * _sin() / 2.0;
     }
 
     double perimeter() override
     {
         double height = _v1->length();
         double width = _v2->length();
-        double side = sqrt(height * height + width * width);
+        double side = sqrt(height * height + width * width - 2 * height * width * _cos());
         return height + width + side;
     }
 

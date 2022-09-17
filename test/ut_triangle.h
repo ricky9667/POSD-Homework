@@ -41,3 +41,4 @@ TEST(TriangleTest, testTriangleParallel)
     
     ASSERT_ANY_THROW(new Triangle(a, b));
 }
+
