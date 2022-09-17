@@ -21,17 +21,6 @@ public:
         _v2 = v2;
     }
 
-    ~Triangle() 
-    {
-        if (_v1 != nullptr)
-            delete[] _v1;
-        if (_v2 != nullptr)
-            delete[] _v2;
-
-        _v1 = nullptr;
-        _v2 = nullptr;
-    }
-
     double area() override
     {
         return _v1->length() * _v2->length() / 2.0;

@@ -17,14 +17,6 @@ public:
         _radiusVec = radiusVec;
     }
 
-    ~Circle() 
-    {
-        if (_radiusVec != nullptr)
-            delete[] _radiusVec;
-
-        _radiusVec = nullptr;
-    }
-
     double radius() 
     {
         return _radiusVec->length();

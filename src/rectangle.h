@@ -20,17 +20,6 @@ public:
         _widthVec = widthVec;
     }
 
-    ~Rectangle()
-    {
-        if (_lengthVec != nullptr)
-            delete[] _lengthVec;
-        if (_widthVec != nullptr)
-            delete[] _widthVec;
-
-        _lengthVec = nullptr;
-        _widthVec = nullptr;
-    }
-
     double length() 
     {
         return _lengthVec->length();

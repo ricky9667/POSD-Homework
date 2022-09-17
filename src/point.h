@@ -18,11 +18,10 @@ private:
 public:
     Point(const double x, const double y) : _x{x}, _y{y} {}
 
-    ~Point() {}
-
     const bool operator==(const Point &other) const
     {
-        return _x == other.x() && _y == other.y();
+        return doubleToString(_x, 2) == doubleToString(other.x(), 2) 
+            && doubleToString(_y, 2) == doubleToString(other.y(), 2);
     }
 
     const double x() const

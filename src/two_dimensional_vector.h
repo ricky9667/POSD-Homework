@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <cmath>
 #include "point.h"
 
@@ -10,18 +11,7 @@ private:
     const Point *_b;
 
 public:
-    TwoDimensionalVector(Point *a, Point *b): _a{a}, _b{b} {}
-
-    ~TwoDimensionalVector() 
-    {
-        if (_a != nullptr) 
-            delete[] _a;
-        if (_b != nullptr)
-            delete[] _b;
-
-        _a = nullptr;
-        _b = nullptr;
-    }
+    TwoDimensionalVector(const Point *a, const Point *b): _a{a}, _b{b} {}
 
     const Point *a() const
     {
