@@ -4,8 +4,8 @@ class Iterator;
 class Shape
 {
 public:
-    virtual double area() const = 0;
-    virtual double perimeter() const = 0;
+    virtual double area() = 0;
+    virtual double perimeter() = 0;
     virtual std::string info() = 0;
     virtual Iterator *createDFSIterator() = 0;
     virtual Iterator *createBFSIterator() = 0;

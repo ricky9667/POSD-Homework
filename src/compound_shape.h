@@ -12,15 +12,11 @@ private:
     std::list<Shape *> _shapes;
 
 public:
-    CompoundShape(Shape **shapes) 
-    {
-        for (Shape* shape = *shapes; shape != nullptr; shape++)
-            _shapes.push_back(shape);
-    }
+    CompoundShape(Shape **shapes, int size) : _shapes(shapes, shapes + size) {}
 
     ~CompoundShape() {}
 
-    double area() const override
+    double area() override
     {
         double totalArea = 0;
         for (auto shape : _shapes)
@@ -28,7 +24,7 @@ public:
         return totalArea;
     }
 
-    double perimeter() const override
+    double perimeter() override
     {
         double totalPerimeter = 0;
         for (auto shape : _shapes)

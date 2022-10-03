@@ -35,12 +35,12 @@ public:
         _v2 = v2;
     }
 
-    double area() const override
+    double area() override
     {
         return _v1->length() * _v2->length() * _sin() / 2.0;
     }
 
-    double perimeter() const override
+    double perimeter() override
     {
         double height = _v1->length();
         double width = _v2->length();

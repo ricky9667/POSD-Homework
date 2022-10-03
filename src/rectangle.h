@@ -34,12 +34,12 @@ public:
         return _widthVec->length();
     }
 
-    double area() const override 
+    double area() override 
     {
         return _lengthVec->length() * _widthVec->length();
     }
 
-    double perimeter() const override
+    double perimeter() override
     {
        return 2 * (_lengthVec->length() + _widthVec->length()); 
     }

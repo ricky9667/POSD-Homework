@@ -23,13 +23,13 @@ public:
         return _radiusVec->length();
     }
 
-    double area() const override
+    double area() override
     {
         double radius = _radiusVec->length();
         return M_PI * radius * radius;
     }
 
-    double perimeter() const override
+    double perimeter() override
     {
         return 2.0 * M_PI * _radiusVec->length();
     }

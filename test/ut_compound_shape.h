@@ -38,21 +38,17 @@ protected:
         delete p3;
         delete p4;
         delete p5;
-
-        delete v1;
         delete v2;
         delete v3;
-
         delete c1;
-        
         delete r1;
     }
 };
 
-TEST_F(CompoundShapeTest, testArea)
+TEST_F(CompoundShapeTest, testCompoundShapeArea)
 {
-    //List<Shape *> shapes = {c1, r1};
-    //CompoundShape* compoundShape = new CompoundShape(shapes); 
-    //ASSERT_EQ(c1.area() + r1.area(), compoundShape->area());
+    Shape* shapes[] = {c1, r1};
+    CompoundShape* compoundShape = new CompoundShape(shapes, 2); 
+    ASSERT_NEAR(c1->area() + r1->area(), compoundShape->area(), 0.001);
 }
 
