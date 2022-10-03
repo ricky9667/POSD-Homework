@@ -4,6 +4,7 @@
 #include <cmath>
 #include "shape.h"
 #include "two_dimensional_vector.h"
+#include "iterator/iterator.h"
 
 class Triangle : public Shape
 {
@@ -34,12 +35,12 @@ public:
         _v2 = v2;
     }
 
-    double area() override
+    double area() const override
     {
         return _v1->length() * _v2->length() * _sin() / 2.0;
     }
 
-    double perimeter() override
+    double perimeter() const override
     {
         double height = _v1->length();
         double width = _v2->length();
@@ -56,5 +57,13 @@ public:
     {
         return "Triangle (" + _v1->info() + ", " + _v2->info() + ")";
     }
+  
+    Iterator *createDFSIterator() override {}
+
+    Iterator *createBFSIterator() override {}
+
+    void addShape(Shape *shape) override {}
+
+    void deleteShape(Shape *shape) override {}
 };
 

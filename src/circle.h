@@ -5,6 +5,7 @@
 #include <cmath>
 #include "two_dimensional_vector.h"
 #include "shape.h"
+#include "iterator/iterator.h"
 
 class Circle : public Shape
 {
@@ -22,13 +23,13 @@ public:
         return _radiusVec->length();
     }
 
-    double area() override
+    double area() const override
     {
         double radius = _radiusVec->length();
         return M_PI * radius * radius;
     }
 
-    double perimeter() override
+    double perimeter() const override
     {
         return 2.0 * M_PI * _radiusVec->length();
     }
@@ -37,5 +38,13 @@ public:
     {
         return "Circle (" + _radiusVec->info() + ")";
     }
+
+    Iterator *createDFSIterator() override {}
+
+    Iterator *createBFSIterator() override {}
+
+    void addShape(Shape *shape) override {}
+
+    void deleteShape(Shape *shape) override {}
 };
 

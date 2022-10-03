@@ -3,6 +3,7 @@
 #include <string>
 #include "shape.h"
 #include "two_dimensional_vector.h"
+#include "iterator/iterator.h"
 
 class Rectangle : public Shape
 {
@@ -33,12 +34,12 @@ public:
         return _widthVec->length();
     }
 
-    double area() override 
+    double area() const override 
     {
         return _lengthVec->length() * _widthVec->length();
     }
 
-    double perimeter() override
+    double perimeter() const override
     {
        return 2 * (_lengthVec->length() + _widthVec->length()); 
     }
@@ -47,5 +48,13 @@ public:
     {
         return "Rectangle (" + _lengthVec->info() + ", " + _widthVec->info() + ")";
     }
+
+    Iterator *createDFSIterator() override {}
+
+    Iterator *createBFSIterator() override {}
+
+    void addShape(Shape *shape) override {}
+
+    void deleteShape(Shape *shape) override {}
 };
 

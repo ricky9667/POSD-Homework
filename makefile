@@ -1,8 +1,8 @@
 .PHONY: dirs clean stat
 
-SRC = src/point.h src/two_dimensional_vector.h src/triangle.h src/rectangle.h src/circle.h src/shape.h
+SRC = src/point.h src/two_dimensional_vector.h src/triangle.h src/rectangle.h src/circle.h src/shape.h src/compound_shape.h
 
-TEST = test/ut_point.h test/ut_two_dimensional_vector.h test/ut_triangle.h test/ut_rectangle.h test/ut_circle.h test/ut_shape.h
+TEST = test/ut_point.h test/ut_two_dimensional_vector.h test/ut_triangle.h test/ut_rectangle.h test/ut_circle.h test/ut_shape.h test/ut_compound_shape.h
 
 all: dirs ut_all
 
