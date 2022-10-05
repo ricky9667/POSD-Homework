@@ -52,9 +52,5 @@ public:
     Iterator *createDFSIterator() override {}
 
     Iterator *createBFSIterator() override {}
-
-    void addShape(Shape *shape) override {}
-
-    void deleteShape(Shape *shape) override {}
 };
 
