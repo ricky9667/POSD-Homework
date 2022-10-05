@@ -59,3 +59,11 @@ TEST_F(CompoundShapeTest, testCompoundShapePerimeter)
     ASSERT_NEAR(c1->perimeter() + r1->perimeter(), compoundShape->perimeter(), 0.001);
 }
 
+TEST_F(CompoundShapeTest, testCompoundShapeInfo)
+{
+    Shape* shapes[] = {c1, r1};
+    CompoundShape* compoundShape = new CompoundShape(shapes, 2);
+    std::string expectedInfo = "CompoundShape (Circle (Vector ((1.34, -2.00), (6.00, 7.00))), Rectangle (Vector ((-3.00, 3.00), (-1.00, 3.00)), Vector ((-1.00, 3.00), (-1.00, -1.00))))";
+    ASSERT_EQ(expectedInfo, compoundShape->info());
+}
+

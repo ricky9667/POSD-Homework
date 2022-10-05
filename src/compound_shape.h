@@ -34,20 +34,45 @@ public:
 
     std::string info() override
     {
-        std::string shapeInfo = (_shapes.front())->info();
-        for (auto it = _shapes.begin(); it != _shapes.end(); it++)
+        std::string shapeInfo = "";
+        bool isFirst = true;
+
+        for (auto shape : _shapes)
         {
-            shapeInfo += ", ";
-            shapeInfo += (*it)->info();
+            if (isFirst)
+            {
+                shapeInfo += shape->info();
+                isFirst = false;
+            }
+            else
+            {
+                shapeInfo += ", ";
+                shapeInfo += shape->info();
+            }
         }
+
+        return "CompoundShape (" + shapeInfo + ")";
     }
 
     Iterator* createDFSIterator() override {}
 
     Iterator* createBFSIterator() override {}
 
-    void addShape(Shape* shape) override {}
+    void addShape(Shape* shape) override
+    {
+        _shapes.push_back(shape);
+    }
 
-    void deleteShape(Shape* shape) override {}
+    void deleteShape(Shape* shape) override
+    {
+        for (auto it : _shapes)
+        {
+            try 
+            {
+                it->deleteShape(shape);
+            }
+            catch (std::exception &e) {}
+        }
+    }
 };
 
