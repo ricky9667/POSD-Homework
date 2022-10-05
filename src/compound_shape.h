@@ -28,7 +28,7 @@ public:
     {
         double totalPerimeter = 0;
         for (auto shape : _shapes)
-            totalPerimeter = shape->perimeter();
+            totalPerimeter += shape->perimeter();
         return totalPerimeter;
     }
 

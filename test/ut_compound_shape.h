@@ -52,3 +52,10 @@ TEST_F(CompoundShapeTest, testCompoundShapeArea)
     ASSERT_NEAR(c1->area() + r1->area(), compoundShape->area(), 0.001);
 }
 
+TEST_F(CompoundShapeTest, testCompoundShapePerimeter)
+{
+    Shape* shapes[] = {c1, r1};
+    CompoundShape* compoundShape = new CompoundShape(shapes, 2); 
+    ASSERT_NEAR(c1->perimeter() + r1->perimeter(), compoundShape->perimeter(), 0.001);
+}
+
