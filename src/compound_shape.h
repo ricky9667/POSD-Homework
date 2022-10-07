@@ -65,6 +65,7 @@ public:
 
     void deleteShape(Shape* shape) override
     {
+        _shapes.remove(shape);
         for (auto it : _shapes)
         {
             try 
