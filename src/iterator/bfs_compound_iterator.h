@@ -13,7 +13,7 @@ public:
 
     void first() override {}
 
-    Shape* currentItem() const override {}
+    Shape* currentItem() override {}
 
     void next() override {}
 
