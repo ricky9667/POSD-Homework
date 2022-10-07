@@ -67,3 +67,32 @@ TEST_F(CompoundShapeTest, testCompoundShapeInfo)
     ASSERT_EQ(expectedInfo, compoundShape->info());
 }
 
+TEST_F(CompoundShapeTest, testAddShape)
+{
+    TwoDimensionalVector *vec1 = new TwoDimensionalVector(new Point(0, 0), new Point(3, 3));
+    TwoDimensionalVector *vec2 = new TwoDimensionalVector(new Point(0, 0), new Point(-1, 1));
+    Triangle *triangle = new Triangle(vec1, vec2);
+    Shape* shapes[] = {c1, r1};
+    CompoundShape* compoundShape = new CompoundShape(shapes, 2);
+    ASSERT_NO_THROW(compoundShape->addShape(triangle));
+
+    delete vec1;
+    delete vec2;
+    delete triangle;
+}
+
+TEST_F(CompoundShapeTest, testDeleteShape)
+{
+    TwoDimensionalVector *vec1 = new TwoDimensionalVector(new Point(0, 0), new Point(3, 3));
+    TwoDimensionalVector *vec2 = new TwoDimensionalVector(new Point(0, 0), new Point(-1, 1));
+    Triangle *triangle = new Triangle(vec1, vec2);
+    Shape* shapes[] = {c1, r1};
+    CompoundShape* compoundShape = new CompoundShape(shapes, 2);
+    compoundShape->addShape(triangle);
+    ASSERT_NO_THROW(compoundShape->deleteShape(triangle));
+    
+    delete vec1;
+    delete vec2;
+    delete triangle;
+}
+

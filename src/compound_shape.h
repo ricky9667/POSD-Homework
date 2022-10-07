@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <iostream>
 
 #include "shape.h"
 #include "./iterator/dfs_compound_iterator.h"
@@ -66,13 +67,16 @@ public:
     void deleteShape(Shape* shape) override
     {
         _shapes.remove(shape);
+        std::cout << "removed current shape" << std::endl;
+
         for (auto it : _shapes)
         {
             try 
             {
+                throw std::string("exception");
                 it->deleteShape(shape);
             }
-            catch (std::exception &e) {}
+            catch (std::string exception) {}
         }
     }
 };
