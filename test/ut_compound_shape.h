@@ -1,5 +1,3 @@
-#include <list>
-
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/shape.h"
