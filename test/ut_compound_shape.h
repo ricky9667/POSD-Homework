@@ -7,7 +7,8 @@
 #include "../src/rectangle.h"
 #include "../src/compound_shape.h"
 
-class CompoundShapeTest : public ::testing::Test {
+class CompoundShapeTest : public ::testing::Test
+{
 protected:
     Point *p1, *p2, *p3, *p4, *p5;
     TwoDimensionalVector *v1, *v2, *v3;
