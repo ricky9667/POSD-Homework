@@ -4,6 +4,7 @@ class Iterator;
 class Shape
 {
 public:
+    virtual ~Shape() {}
     virtual double area() = 0;
     virtual double perimeter() = 0;
     virtual std::string info() = 0;

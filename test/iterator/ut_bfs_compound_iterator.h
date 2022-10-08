@@ -47,12 +47,30 @@ protected:
 
     void TearDown() override
     {
-        delete p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11;
-        delete v1, v2, v3, v4, v5, v6;
+        delete p0;
+        delete p1;
+        delete p2;
+        delete p3;
+        delete p4;
+        delete p5;
+        delete p6;
+        delete p7;
+        delete p8;
+        delete p9;
+        delete p10;
+        delete p11;
+        delete v1;
+        delete v2;
+        delete v3;
+        delete v4;
+        delete v5;
+        delete v6;
         delete t1;
         delete r1;
-        delete c1, c2;
-        delete com2, com3;
+        delete c1;
+        delete c2;
+        delete com2;
+        delete com3;
         delete com1;
     }
 };
