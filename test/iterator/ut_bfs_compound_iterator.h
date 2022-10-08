@@ -62,3 +62,34 @@ TEST_F(BFSCompoundIteratorTest, testConstructor)
     Shape* shapes[] = {c1, r1};
     ASSERT_NO_THROW(new BFSCompoundIterator(shapes, shapes + 2));
 }
+
+TEST_F(BFSCompoundIteratorTest, testFirst)
+{
+    Iterator *iterator = com1->createBFSIterator();
+    iterator->first();
+    ASSERT_EQ(com2, iterator->currentItem());
+}
+TEST_F(BFSCompoundIteratorTest, testCurrentItem)
+{
+    Iterator *iterator = com1->createBFSIterator();
+    iterator->first();
+    ASSERT_EQ(com2, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(com3, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(t1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(c2, iterator->currentItem());
+}
+TEST_F(BFSCompoundIteratorTest, testIsDone)
+{
+    Iterator *iterator = com2->createBFSIterator();
+    iterator->first();
+    ASSERT_FALSE(iterator->isDone());
+    iterator->next();
+    ASSERT_TRUE(iterator->isDone());
+}
