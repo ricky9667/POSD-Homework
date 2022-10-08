@@ -72,3 +72,28 @@ TEST_F(DFSCompoundIteratorTest, testFirst)
     ASSERT_EQ(com2, iterator->currentItem());
 }
 
+TEST_F(DFSCompoundIteratorTest, testCurrentItem)
+{
+    Iterator *iterator = com1->createDFSIterator();
+    iterator->first();
+    ASSERT_EQ(com2, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(t1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(com3, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(c2, iterator->currentItem());
+}
+
+TEST_F(DFSCompoundIteratorTest, testIsDone)
+{
+    Iterator *iterator = com2->createDFSIterator();
+    iterator->first();
+    ASSERT_FALSE(iterator->isDone());
+    iterator->next();
+    ASSERT_TRUE(iterator->isDone());
+}
