@@ -21,7 +21,7 @@ public:
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++)
         {
             _shapes.push_back(*parentIterator);
-            Iterator *childIterator = (*parentIterator)->createDFSIterator();
+            Iterator *childIterator = (*parentIterator)->createBFSIterator();
             childIterators.push_back(childIterator);
         }
 
