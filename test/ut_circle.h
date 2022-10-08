@@ -2,15 +2,36 @@
 #include "../src/two_dimensional_vector.h"
 #include "../src/circle.h"
 
-TEST(CircleTest, testCircleRadius)
+class CircleTest : public ::testing::Test
 {
-    TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
-    Circle *circle = new Circle(vector);
+protected:
+    Point *p1, *p2;
+    TwoDimensionalVector *vector;
+    Circle *circle;
 
-    ASSERT_NEAR(vector->length(), circle->radius(), 0.001);
+    void SetUp() override
+    {
+        p1 = new Point(-4.284, 0.264);
+        p2 = new Point(-4.827, 0.728);
+        vector = new TwoDimensionalVector(p1, p2);
+        circle = new Circle(vector);
+    }
+
+    void TearDown() override
+    {
+        delete p1;
+        delete p2;
+        delete vector;
+        delete circle;
+    }
+};
+
+TEST_F(CircleTest, testCircleRadius)
+{
+   ASSERT_NEAR(vector->length(), circle->radius(), 0.001);
 }
 
-TEST(CircleTest, testCircleArea)
+TEST_F(CircleTest, testCircleArea)
 {
     TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
     Circle *circle = new Circle(vector);
@@ -18,7 +39,7 @@ TEST(CircleTest, testCircleArea)
     ASSERT_NEAR(1.6027, circle->area(), 0.001);
 }
 
-TEST(CircleTest, testCirclePerimeter)
+TEST_F(CircleTest, testCirclePerimeter)
 {
     TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
     Circle *circle = new Circle(vector);
@@ -26,7 +47,7 @@ TEST(CircleTest, testCirclePerimeter)
     ASSERT_NEAR(4.4877, circle->perimeter(), 0.001);
 }
 
-TEST(CircleTest, testCircleInfo)
+TEST_F(CircleTest, testCircleInfo)
 {
     TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
     Circle *circle = new Circle(vector);
@@ -34,3 +55,4 @@ TEST(CircleTest, testCircleInfo)
     std::string expectedInfo = "Circle (Vector ((-4.28, 0.26), (-4.83, 0.73)))";
     ASSERT_EQ(expectedInfo, circle->info());
 }
+
