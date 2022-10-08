@@ -59,7 +59,10 @@ public:
         return new DFSCompoundIterator<std::list<Shape *>::iterator>(_shapes.begin(), _shapes.end());
     }
 
-    Iterator* createBFSIterator() override {}
+    Iterator *createBFSIterator() override
+    {
+        return new BFSCompoundIterator<std::list<Shape *>::iterator>(_shapes.begin(), _shapes.end());
+    }
 
     void addShape(Shape* shape) override
     {
@@ -79,3 +82,4 @@ public:
         }
     }
 };
+
