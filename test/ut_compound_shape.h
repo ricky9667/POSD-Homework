@@ -95,3 +95,27 @@ TEST_F(CompoundShapeTest, testDeleteShape)
     delete triangle;
 }
 
+TEST_F(CompoundShapeTest, testCreateDFSIterator)
+{
+    Shape* shapes[] = {c1, r1};
+    CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+    Iterator *iterator = compoundShape->createDFSIterator();
+
+    iterator->first();
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+}
+
+TEST_F(CompoundShapeTest, testCreateBFSIterator)
+{
+    Shape* shapes[] = {c1, r1};
+    CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+    Iterator *iterator = compoundShape->createBFSIterator();
+
+    iterator->first();
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+}
+
