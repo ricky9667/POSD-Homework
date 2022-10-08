@@ -67,12 +67,8 @@ TEST_F(DFSCompoundIteratorTest, testConstructor)
 
 TEST_F(DFSCompoundIteratorTest, testFirst)
 {
-    Iterator *iterator = compoundShape->createDFSIterator();
+    Iterator *iterator = com1->createDFSIterator();
     iterator->first();
-    ASSERT_EQ(c1, iterator->currentItem());
+    ASSERT_EQ(com2, iterator->currentItem());
 }
 
-TEST_F(DFSCompoundIteratorTest, testCurrentItem)
-{
-    Iterator *iterator = CompoundShape->createDFSIterator();
-}
