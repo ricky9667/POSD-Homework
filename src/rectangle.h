@@ -1,9 +1,11 @@
 #pragma once
 
 #include <string>
+
 #include "shape.h"
 #include "two_dimensional_vector.h"
 #include "iterator/iterator.h"
+#include "iterator/null_iterator.h"
 
 class Rectangle : public Shape
 {
@@ -49,8 +51,14 @@ public:
         return "Rectangle (" + _lengthVec->info() + ", " + _widthVec->info() + ")";
     }
 
-    Iterator *createDFSIterator() override {}
+    Iterator *createDFSIterator() override
+    {
+        return new NullIterator();
+    }
 
-    Iterator *createBFSIterator() override {}
+    Iterator *createBFSIterator() override
+    {
+        return new NullIterator();
+    }
 };
 

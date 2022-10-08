@@ -3,9 +3,11 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+
 #include "two_dimensional_vector.h"
 #include "shape.h"
 #include "iterator/iterator.h"
+#include "iterator/null_iterator.h"
 
 class Circle : public Shape
 {
@@ -39,8 +41,14 @@ public:
         return "Circle (" + _radiusVec->info() + ")";
     }
 
-    Iterator *createDFSIterator() override {}
+    Iterator *createDFSIterator() override
+    {
+        return new NullIterator();
+    }
 
-    Iterator *createBFSIterator() override {}
+    Iterator *createBFSIterator() override
+    {
+        return new NullIterator();
+    }
 };
 
