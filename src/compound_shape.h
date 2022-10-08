@@ -54,7 +54,10 @@ public:
         return "CompoundShape (" + shapeInfo + ")";
     }
 
-    Iterator* createDFSIterator() override {}
+    Iterator *createDFSIterator() override
+    {
+        return new DFSCompoundIterator<std::list<Shape *>::iterator>(_shapes.begin(), _shapes.end());
+    }
 
     Iterator* createBFSIterator() override {}
 
@@ -76,4 +79,3 @@ public:
         }
     }
 };
-
