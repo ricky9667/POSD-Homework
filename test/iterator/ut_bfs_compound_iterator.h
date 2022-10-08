@@ -87,22 +87,40 @@ TEST_F(BFSCompoundIteratorTest, testFirst)
     iterator->first();
     ASSERT_EQ(com2, iterator->currentItem());
 }
+
 TEST_F(BFSCompoundIteratorTest, testCurrentItem)
 {
     Iterator *iterator = com1->createBFSIterator();
-    iterator->first();
+    ASSERT_NO_THROW(iterator->first());
+    
     ASSERT_EQ(com2, iterator->currentItem());
-    iterator->next();
+    ASSERT_NO_THROW(iterator->next());
+    ASSERT_FALSE(iterator->isDone());
+
     ASSERT_EQ(com3, iterator->currentItem());
-    iterator->next();
+    ASSERT_NO_THROW(iterator->next());
+    ASSERT_FALSE(iterator->isDone());
+
     ASSERT_EQ(t1, iterator->currentItem());
-    iterator->next();
+    ASSERT_NO_THROW(iterator->next());
+    ASSERT_FALSE(iterator->isDone());
+
     ASSERT_EQ(r1, iterator->currentItem());
-    iterator->next();
+    ASSERT_NO_THROW(iterator->next());
+    ASSERT_FALSE(iterator->isDone());
+    
     ASSERT_EQ(c1, iterator->currentItem());
-    iterator->next();
+    ASSERT_NO_THROW(iterator->next());
+    ASSERT_FALSE(iterator->isDone());
+    
     ASSERT_EQ(c2, iterator->currentItem());
+    ASSERT_NO_THROW(iterator->next());
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
 }
+
 TEST_F(BFSCompoundIteratorTest, testIsDone)
 {
     Iterator *iterator = com2->createBFSIterator();
