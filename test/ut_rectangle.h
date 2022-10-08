@@ -60,3 +60,22 @@ TEST_F(RectangleTest, testRectangleNotOrthogonal)
 
     ASSERT_ANY_THROW(new Rectangle(lengthVector, widthVector));
 }
+
+TEST_F(RectangleTest, testCreateDFSIterator)
+{
+    Iterator *iterator = rectangle->createDFSIterator();
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(RectangleTest, testCreateBFSIterator)
+{
+    Iterator *iterator = rectangle->createBFSIterator();
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+

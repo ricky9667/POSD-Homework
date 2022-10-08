@@ -56,3 +56,21 @@ TEST_F(TriangleTest, testTriangleParallel)
     ASSERT_ANY_THROW(new Triangle(a, b));
 }
 
+TEST_F(TriangleTest, testCreateDFSIterator)
+{
+    Iterator *iterator = triangle->createDFSIterator();
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(TriangleTest, testCreateBFSIterator)
+{
+    Iterator *iterator = triangle->createBFSIterator();
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+

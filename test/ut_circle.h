@@ -56,3 +56,21 @@ TEST_F(CircleTest, testCircleInfo)
     ASSERT_EQ(expectedInfo, circle->info());
 }
 
+TEST_F(CircleTest, testCreateDFSIterator)
+{
+    Iterator *iterator = circle->createDFSIterator();
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(CircleTest, testCreateBFSIterator)
+{
+    Iterator *iterator = circle->createBFSIterator();
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+
