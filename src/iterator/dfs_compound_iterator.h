@@ -20,8 +20,8 @@ public:
     {
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++) 
         {
-            Iterator *childIterator = (*parentIterator)->createDFSIterator();
             _shapes.push_back(*parentIterator);
+            Iterator *childIterator = (*parentIterator)->createDFSIterator();
             for (; !childIterator->isDone(); childIterator->next())
             {
                 _shapes.push_back(childIterator->currentItem());
