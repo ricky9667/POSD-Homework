@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "../../src/iterator/iterator.h"
 #include "../../src/iterator/dfs_compound_iterator.h"
 #include "../../src/compound_shape.h"
