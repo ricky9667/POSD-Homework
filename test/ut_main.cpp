@@ -9,6 +9,7 @@
 #include "ut_compound_shape.h"
 #include "iterator/ut_null_iterator.h"
 #include "iterator/ut_dfs_compound_iterator.h"
+#include "iterator/ut_bfs_compound_iterator.h"
 
 int main(int argc, char **argv)
 {
