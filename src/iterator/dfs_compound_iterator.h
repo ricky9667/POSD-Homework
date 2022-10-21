@@ -8,7 +8,7 @@
 
 class CompoundShape;
 
-template<class ForwardIterator>
+template <class ForwardIterator>
 class DFSCompoundIterator : public Iterator
 {
 private:
@@ -18,7 +18,7 @@ private:
 public:
     DFSCompoundIterator(ForwardIterator begin, ForwardIterator end)
     {
-        for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++) 
+        for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++)
         {
             _shapes.push_back(*parentIterator);
             Iterator *childIterator = (*parentIterator)->createIterator(new DFSIteratorFactory());
@@ -36,7 +36,7 @@ public:
         _currentIndex = 0;
     }
 
-    Shape* currentItem() override
+    Shape *currentItem() override
     {
         if (isDone())
             throw std::string("The iterator has finished iterating, call first() before using currentItem().");
@@ -48,7 +48,7 @@ public:
     {
         if (isDone())
             throw std::string("The iterator has finished iterating, call first() before using currentItem().");
-        
+
         _currentIndex++;
     }
 

@@ -8,16 +8,17 @@
 
 class CompoundShape;
 
-template<class ForwardIterator>
+template <class ForwardIterator>
 class BFSCompoundIterator : public Iterator
 {
 private:
     std::vector<Shape *> _shapes;
     int _currentIndex = 0;
+
 public:
     BFSCompoundIterator(ForwardIterator begin, ForwardIterator end)
     {
-        std::vector<Iterator*> childIterators;
+        std::vector<Iterator *> childIterators;
 
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++)
         {
@@ -42,8 +43,8 @@ public:
     {
         _currentIndex = 0;
     }
-    
-    Shape* currentItem() override
+
+    Shape *currentItem() override
     {
         if (isDone())
             throw std::string("The iterator has finished iterating, call first() before using currentItem().");
@@ -55,7 +56,7 @@ public:
     {
         if (isDone())
             throw std::string("The iterator has finished iterating, call first() before using currentItem().");
-        
+
         _currentIndex++;
     }
 
