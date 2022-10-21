@@ -1,5 +1,8 @@
 #pragma once
 
+#include<string>
+#include "../shape.h"
+
 class Iterator
 {
 public:
@@ -25,4 +28,3 @@ public:
         return true;
     }
 };
-
