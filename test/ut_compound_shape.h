@@ -4,6 +4,8 @@
 #include "../src/circle.h"
 #include "../src/rectangle.h"
 #include "../src/compound_shape.h"
+#include "../src/iterator/factory/dfs_iterator_factory.h"
+#include "../src/iterator/factory/bfs_iterator_factory.h"
 
 class CompoundShapeTest : public ::testing::Test
 {
@@ -99,7 +101,7 @@ TEST_F(CompoundShapeTest, testCreateDFSIterator)
 {
     Shape* shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
-    Iterator *iterator = compoundShape->createDFSIterator();
+    Iterator *iterator = compoundShape->createIterator(new DFSIteratorFactory());
 
     iterator->first();
     ASSERT_EQ(c1, iterator->currentItem());
@@ -111,11 +113,10 @@ TEST_F(CompoundShapeTest, testCreateBFSIterator)
 {
     Shape* shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
-    Iterator *iterator = compoundShape->createBFSIterator();
+    Iterator *iterator = compoundShape->createIterator(new BFSIteratorFactory());
 
     iterator->first();
     ASSERT_EQ(c1, iterator->currentItem());
     iterator->next();
     ASSERT_EQ(r1, iterator->currentItem());
 }
-

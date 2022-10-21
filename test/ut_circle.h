@@ -1,6 +1,8 @@
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/circle.h"
+#include "../src/iterator/factory/dfs_iterator_factory.h"
+#include "../src/iterator/factory/bfs_iterator_factory.h"
 
 class CircleTest : public ::testing::Test
 {
@@ -28,7 +30,7 @@ protected:
 
 TEST_F(CircleTest, testCircleRadius)
 {
-   ASSERT_NEAR(vector->length(), circle->radius(), 0.001);
+    ASSERT_NEAR(vector->length(), circle->radius(), 0.001);
 }
 
 TEST_F(CircleTest, testCircleArea)
@@ -58,7 +60,7 @@ TEST_F(CircleTest, testCircleInfo)
 
 TEST_F(CircleTest, testCreateDFSIterator)
 {
-    Iterator *iterator = circle->createDFSIterator();
+    Iterator *iterator = circle->createIterator(new DFSIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
@@ -67,10 +69,9 @@ TEST_F(CircleTest, testCreateDFSIterator)
 
 TEST_F(CircleTest, testCreateBFSIterator)
 {
-    Iterator *iterator = circle->createBFSIterator();
+    Iterator *iterator = circle->createIterator(new BFSIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
     ASSERT_TRUE(iterator->isDone());
 }
-

@@ -3,6 +3,8 @@
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/triangle.h"
+#include "../src/iterator/factory/dfs_iterator_factory.h"
+#include "../src/iterator/factory/bfs_iterator_factory.h"
 
 class TriangleTest : public ::testing::Test
 {
@@ -52,13 +54,13 @@ TEST_F(TriangleTest, testTriangleParallel)
 {
     TwoDimensionalVector *a = new TwoDimensionalVector(new Point(0, 0), new Point(3, 1));
     TwoDimensionalVector *b = new TwoDimensionalVector(new Point(0, 0), new Point(6, 2));
-    
+
     ASSERT_ANY_THROW(new Triangle(a, b));
 }
 
 TEST_F(TriangleTest, testCreateDFSIterator)
 {
-    Iterator *iterator = triangle->createDFSIterator();
+    Iterator *iterator = triangle->createIterator(new DFSIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
@@ -67,10 +69,9 @@ TEST_F(TriangleTest, testCreateDFSIterator)
 
 TEST_F(TriangleTest, testCreateBFSIterator)
 {
-    Iterator *iterator = triangle->createBFSIterator();
+    Iterator *iterator = triangle->createIterator(new BFSIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
     ASSERT_TRUE(iterator->isDone());
 }
-

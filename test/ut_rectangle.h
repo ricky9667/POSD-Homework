@@ -2,6 +2,8 @@
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/rectangle.h"
+#include "../src/iterator/factory/dfs_iterator_factory.h"
+#include "../src/iterator/factory/bfs_iterator_factory.h"
 
 class RectangleTest : public ::testing::Test
 {
@@ -63,7 +65,7 @@ TEST_F(RectangleTest, testRectangleNotOrthogonal)
 
 TEST_F(RectangleTest, testCreateDFSIterator)
 {
-    Iterator *iterator = rectangle->createDFSIterator();
+    Iterator *iterator = rectangle->createIterator(new DFSIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
@@ -72,10 +74,9 @@ TEST_F(RectangleTest, testCreateDFSIterator)
 
 TEST_F(RectangleTest, testCreateBFSIterator)
 {
-    Iterator *iterator = rectangle->createBFSIterator();
+    Iterator *iterator = rectangle->createIterator(new BFSIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
     ASSERT_TRUE(iterator->isDone());
 }
-
