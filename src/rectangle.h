@@ -51,6 +51,11 @@ public:
         return "Rectangle (" + _lengthVec->info() + ", " + _widthVec->info() + ")";
     }
 
+    Iterator *createIterator(IteratorFactory *factory) override
+    {
+        return new NullIterator();
+    }
+
     Iterator *createDFSIterator() override
     {
         return new NullIterator();

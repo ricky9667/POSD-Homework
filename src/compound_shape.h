@@ -5,6 +5,7 @@
 #include "shape.h"
 #include "./iterator/dfs_compound_iterator.h"
 #include "./iterator/bfs_compound_iterator.h"
+#include "./iterator/factory/iterator_factory.h"
 
 class CompoundShape : public Shape
 {
@@ -52,6 +53,11 @@ public:
         }
 
         return "CompoundShape (" + shapeInfo + ")";
+    }
+
+    Iterator *createIterator(IteratorFactory *factory) override
+    {
+        return factory->createIterator(_shapes.begin(), _shapes.end());
     }
 
     Iterator *createDFSIterator() override

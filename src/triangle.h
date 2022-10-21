@@ -59,7 +59,12 @@ public:
     {
         return "Triangle (" + _v1->info() + ", " + _v2->info() + ")";
     }
-  
+
+    Iterator *createIterator(IteratorFactory *factory) override
+    {
+        return new NullIterator();
+    }
+
     Iterator *createDFSIterator() override
     {
         return new NullIterator();

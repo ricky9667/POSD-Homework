@@ -41,6 +41,11 @@ public:
         return "Circle (" + _radiusVec->info() + ")";
     }
 
+    Iterator *createIterator(IteratorFactory *factory) override
+    {
+        return new NullIterator();
+    }
+
     Iterator *createDFSIterator() override
     {
         return new NullIterator();
