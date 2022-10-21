@@ -6,6 +6,7 @@
 #include "two_dimensional_vector.h"
 #include "iterator/iterator.h"
 #include "iterator/null_iterator.h"
+#include "iterator/factory/iterator_factory.h"
 
 class Rectangle : public Shape
 {
@@ -53,7 +54,7 @@ public:
 
     Iterator *createIterator(IteratorFactory *factory) override
     {
-        return new NullIterator();
+        return factory->createIterator();
     }
 
     Iterator *createDFSIterator() override

@@ -8,6 +8,7 @@
 #include "shape.h"
 #include "iterator/iterator.h"
 #include "iterator/null_iterator.h"
+#include "iterator/factory/iterator_factory.h"
 
 class Circle : public Shape
 {
@@ -15,12 +16,12 @@ private:
     TwoDimensionalVector *_radiusVec;
 
 public:
-    Circle(TwoDimensionalVector *radiusVec) 
+    Circle(TwoDimensionalVector *radiusVec)
     {
         _radiusVec = radiusVec;
     }
 
-    double radius() 
+    double radius()
     {
         return _radiusVec->length();
     }
@@ -43,7 +44,7 @@ public:
 
     Iterator *createIterator(IteratorFactory *factory) override
     {
-        return new NullIterator();
+        return factory->createIterator();
     }
 
     Iterator *createDFSIterator() override
@@ -56,4 +57,3 @@ public:
         return new NullIterator();
     }
 };
-
