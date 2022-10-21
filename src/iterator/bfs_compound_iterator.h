@@ -4,6 +4,7 @@
 
 #include "iterator.h"
 #include "../shape.h"
+#include "factory/bfs_iterator_factory.h"
 
 class CompoundShape;
 
@@ -21,7 +22,7 @@ public:
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++)
         {
             _shapes.push_back(*parentIterator);
-            Iterator *childIterator = (*parentIterator)->createBFSIterator();
+            Iterator *childIterator = (*parentIterator)->createIterator(new BFSIteratorFactory());
             childIterators.push_back(childIterator);
         }
 
@@ -63,4 +64,3 @@ public:
         return _currentIndex >= _shapes.size();
     }
 };
-

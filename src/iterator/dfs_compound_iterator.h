@@ -4,7 +4,7 @@
 
 #include "iterator.h"
 #include "../shape.h"
-#include "../compound_shape.h"
+#include "factory/dfs_iterator_factory.h"
 
 class CompoundShape;
 
@@ -21,7 +21,7 @@ public:
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++) 
         {
             _shapes.push_back(*parentIterator);
-            Iterator *childIterator = (*parentIterator)->createDFSIterator();
+            Iterator *childIterator = (*parentIterator)->createIterator(new DFSIteratorFactory());
             for (; !childIterator->isDone(); childIterator->next())
             {
                 _shapes.push_back(childIterator->currentItem());
@@ -57,4 +57,3 @@ public:
         return _currentIndex >= _shapes.size();
     }
 };
-
