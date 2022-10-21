@@ -1,6 +1,7 @@
 #include "../../src/iterator/iterator.h"
 #include "../../src/iterator/bfs_compound_iterator.h"
 #include "../../src/compound_shape.h"
+#include "../../src/iterator/factory/bfs_iterator_factory.h"
 
 class BFSCompoundIteratorTest : public ::testing::Test
 {
@@ -37,11 +38,11 @@ protected:
         c1 = new Circle(v5);
         c2 = new Circle(v6);
 
-        Shape* shapes2[] = {t1};
+        Shape *shapes2[] = {t1};
         com2 = new CompoundShape(shapes2, 1);
-        Shape* shapes3[] = {r1, c1, c2};
+        Shape *shapes3[] = {r1, c1, c2};
         com3 = new CompoundShape(shapes3, 3);
-        Shape* shapes1[] = {com2, com3};
+        Shape *shapes1[] = {com2, com3};
         com1 = new CompoundShape(shapes1, 2);
     }
 
@@ -77,22 +78,22 @@ protected:
 
 TEST_F(BFSCompoundIteratorTest, testConstructor)
 {
-    Shape* shapes[] = {c1, r1};
+    Shape *shapes[] = {c1, r1};
     ASSERT_NO_THROW(new BFSCompoundIterator(shapes, shapes + 2));
 }
 
 TEST_F(BFSCompoundIteratorTest, testFirst)
 {
-    Iterator *iterator = com1->createBFSIterator();
+    Iterator *iterator = com1->createIterator(new BFSIteratorFactory());
     iterator->first();
     ASSERT_EQ(com2, iterator->currentItem());
 }
 
 TEST_F(BFSCompoundIteratorTest, testCurrentItem)
 {
-    Iterator *iterator = com1->createBFSIterator();
+    Iterator *iterator = com1->createIterator(new BFSIteratorFactory());
     ASSERT_NO_THROW(iterator->first());
-    
+
     ASSERT_EQ(com2, iterator->currentItem());
     ASSERT_NO_THROW(iterator->next());
     ASSERT_FALSE(iterator->isDone());
@@ -108,11 +109,11 @@ TEST_F(BFSCompoundIteratorTest, testCurrentItem)
     ASSERT_EQ(r1, iterator->currentItem());
     ASSERT_NO_THROW(iterator->next());
     ASSERT_FALSE(iterator->isDone());
-    
+
     ASSERT_EQ(c1, iterator->currentItem());
     ASSERT_NO_THROW(iterator->next());
     ASSERT_FALSE(iterator->isDone());
-    
+
     ASSERT_EQ(c2, iterator->currentItem());
     ASSERT_NO_THROW(iterator->next());
 
@@ -123,7 +124,7 @@ TEST_F(BFSCompoundIteratorTest, testCurrentItem)
 
 TEST_F(BFSCompoundIteratorTest, testIsDone)
 {
-    Iterator *iterator = com2->createBFSIterator();
+    Iterator *iterator = com2->createIterator(new BFSIteratorFactory());
     iterator->first();
     ASSERT_FALSE(iterator->isDone());
     iterator->next();
