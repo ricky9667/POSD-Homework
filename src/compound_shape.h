@@ -3,9 +3,7 @@
 #include <list>
 
 #include "shape.h"
-#include "./iterator/dfs_compound_iterator.h"
-#include "./iterator/bfs_compound_iterator.h"
-#include "./iterator/factory/iterator_factory.h"
+#include "iterator/factory/iterator_factory.h"
 
 class CompoundShape : public Shape
 {
@@ -60,32 +58,23 @@ public:
         return factory->createIterator(_shapes.begin(), _shapes.end());
     }
 
-    Iterator *createDFSIterator() override
-    {
-        return new DFSCompoundIterator<std::list<Shape *>::iterator>(_shapes.begin(), _shapes.end());
-    }
-
-    Iterator *createBFSIterator() override
-    {
-        return new BFSCompoundIterator<std::list<Shape *>::iterator>(_shapes.begin(), _shapes.end());
-    }
-
-    void addShape(Shape* shape) override
+    void addShape(Shape *shape) override
     {
         _shapes.push_back(shape);
     }
 
-    void deleteShape(Shape* shape) override
+    void deleteShape(Shape *shape) override
     {
         _shapes.remove(shape);
         for (auto it : _shapes)
         {
-            try 
+            try
             {
                 it->deleteShape(shape);
             }
-            catch (std::string exception) {}
+            catch (std::string exception)
+            {
+            }
         }
     }
 };
-
