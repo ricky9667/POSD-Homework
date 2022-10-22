@@ -10,10 +10,10 @@
 #include "iterator/ut_null_iterator.h"
 #include "iterator/ut_dfs_compound_iterator.h"
 #include "iterator/ut_bfs_compound_iterator.h"
+#include "iterator/ut_list_compound_iterator.h"
 
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
