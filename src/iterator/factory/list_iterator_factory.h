@@ -1,6 +1,8 @@
 #pragma once
 
 #include "iterator_factory.h"
+#include "../null_iterator.h"
+#include "../list_compound_iterator.h"
 
 class ListIteratorFactory : public IteratorFactory
 {
