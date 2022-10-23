@@ -6,16 +6,27 @@
 #include "shape.h"
 #include "iterator/iterator.h"
 #include "iterator/factory/iterator_factory.h"
+#include "visitor/shape_visitor.h"
 
 class Circle : public Shape
 {
 private:
     TwoDimensionalVector *_radiusVec;
+    std::set<const Point *> _points;
+
+    void _calculatePoints()
+    {
+        double centerX = _radiusVec->a()->x(), centerY = _radiusVec->a()->y();
+        double length = _radiusVec->length();
+        _points.insert(new Point(centerX + length, centerY + length));
+        _points.insert(new Point(centerX - length, centerY - length));
+    }
 
 public:
     Circle(TwoDimensionalVector *radiusVec)
     {
         _radiusVec = radiusVec;
+        _calculatePoints();
     }
 
     double radius()
@@ -42,5 +53,15 @@ public:
     Iterator *createIterator(IteratorFactory *factory) override
     {
         return factory->createIterator();
+    }
+
+    std::set<const Point *> getPoints() override
+    {
+        return _points;
+    }
+
+    void accept(ShapeVisitor *visitor) override
+    {
+        visitor->visitCircle(this);
     }
 };

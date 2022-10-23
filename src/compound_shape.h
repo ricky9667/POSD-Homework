@@ -1,9 +1,9 @@
 #pragma once
 
 #include <list>
-
 #include "shape.h"
 #include "iterator/factory/iterator_factory.h"
+#include "visitor/shape_visitor.h"
 
 class CompoundShape : public Shape
 {
@@ -76,5 +76,19 @@ public:
             {
             }
         }
+    }
+
+    std::set<const Point *> getPoints() override
+    {
+        std::set<const Point *> points;
+        for (auto shape : _shapes)
+            for (auto point : shape->getPoints())
+                points.insert(point);
+        return points;
+    }
+
+    void accept(ShapeVisitor *visitor) override
+    {
+        visitor->visitCompoundShape(this);
     }
 };

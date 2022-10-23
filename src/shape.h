@@ -2,6 +2,8 @@
 
 class Iterator;
 class IteratorFactory;
+class ShapeVisitor;
+
 class Shape
 {
 public:
@@ -10,6 +12,8 @@ public:
     virtual double perimeter() = 0;
     virtual std::string info() = 0;
     virtual Iterator *createIterator(IteratorFactory *factory) = 0;
+    virtual std::set<const Point *> getPoints() = 0;
+    virtual void accept(ShapeVisitor *visitor) = 0;
 
     virtual void addShape(Shape *shape)
     {
