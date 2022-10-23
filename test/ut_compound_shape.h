@@ -78,6 +78,13 @@ TEST_F(CompoundShapeTest, testAddShape)
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
     ASSERT_NO_THROW(compoundShape->addShape(triangle));
 
+    Iterator *iterator = compoundShape->createIterator(new DFSIteratorFactory());
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(triangle, iterator->currentItem());
+
     delete vec1;
     delete vec2;
     delete triangle;
@@ -92,6 +99,13 @@ TEST_F(CompoundShapeTest, testDeleteShape)
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
     compoundShape->addShape(triangle);
     ASSERT_NO_THROW(compoundShape->deleteShape(triangle));
+
+    Iterator *iterator = compoundShape->createIterator(new BFSIteratorFactory());
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+    iterator->next();
+    ASSERT_TRUE(iterator->isDone());
 
     delete vec1;
     delete vec2;
