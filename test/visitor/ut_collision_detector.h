@@ -124,3 +124,18 @@ TEST_F(CollisionDetectorTest, VisitCompoundShapeWorksExpectedly)
     ASSERT_EQ(r1, collidedShapes[0]);
     ASSERT_EQ(c2, collidedShapes[1]);
 }
+
+TEST_F(CollisionDetectorTest, CollidedShapesShowsResultExpectedly)
+{
+    Triangle *triangle = new Triangle(
+        new TwoDimensionalVector(new Point(-1, -1), new Point(2, -1)),
+        new TwoDimensionalVector(new Point(-1, -1), new Point(-1, 1)));
+    Circle *circle = new Circle(
+        new TwoDimensionalVector(new Point(2, 2), new Point(4, 4)));
+
+    CollisionDetector *visitor = new CollisionDetector(triangle);
+    visitor->visitCircle(circle);
+    std::vector<Shape *> collidedShapes = visitor->collidedShapes();
+    ASSERT_EQ(1, collidedShapes.size());
+    ASSERT_EQ(circle, collidedShapes[0]);
+}
