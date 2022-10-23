@@ -78,6 +78,24 @@ TEST_F(TriangleTest, testCreateBFSIterator)
     ASSERT_TRUE(iterator->isDone());
 }
 
+TEST_F(TriangleTest, AddShapeShouldThrowException)
+{
+    Triangle *other = new Triangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(-3, 7.2)),
+        new TwoDimensionalVector(new Point(0, 0), new Point(4.54, -1)));
+
+    ASSERT_ANY_THROW(triangle->addShape(other));
+}
+
+TEST_F(TriangleTest, DeleteShapeShouldThrowException)
+{
+    Triangle *other = new Triangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(-3, 7.2)),
+        new TwoDimensionalVector(new Point(0, 0), new Point(4.54, -1)));
+
+    ASSERT_ANY_THROW(triangle->deleteShape(other));
+}
+
 TEST_F(TriangleTest, GetPoints)
 {
     std::set<const Point *> points = triangle->getPoints();
@@ -94,7 +112,7 @@ TEST_F(TriangleTest, AcceptDoesNotThrowException)
     Triangle *other = new Triangle(
         new TwoDimensionalVector(new Point(0, 0), new Point(-3, 7.2)),
         new TwoDimensionalVector(new Point(0, 0), new Point(4.54, -1)));
-    
+
     ShapeVisitor *collisionDetector = new CollisionDetector(other);
     ASSERT_NO_THROW(triangle->accept(collisionDetector));
 

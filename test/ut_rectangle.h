@@ -82,6 +82,24 @@ TEST_F(RectangleTest, testCreateBFSIterator)
     ASSERT_TRUE(iterator->isDone());
 }
 
+TEST_F(RectangleTest, AddShapeShouldThrowException)
+{
+    Rectangle *other = new Rectangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(6, 6)),
+        new TwoDimensionalVector(new Point(0, 0), new Point(-3, 3)));
+
+    ASSERT_ANY_THROW(rectangle->addShape(other));
+}
+
+TEST_F(RectangleTest, DeleteShapeShouldThrowException)
+{
+    Rectangle *other = new Rectangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(6, 6)),
+        new TwoDimensionalVector(new Point(0, 0), new Point(-3, 3)));
+
+    ASSERT_ANY_THROW(rectangle->deleteShape(other));
+}
+
 TEST_F(RectangleTest, GetPoints)
 {
     std::set<const Point *> points = rectangle->getPoints();

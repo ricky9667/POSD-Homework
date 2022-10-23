@@ -77,6 +77,22 @@ TEST_F(CircleTest, testCreateBFSIterator)
     ASSERT_TRUE(iterator->isDone());
 }
 
+TEST_F(CircleTest, AddShapeShouldThrowException)
+{
+    Circle *other = new Circle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(3, 7)));
+
+    ASSERT_ANY_THROW(circle->addShape(other));
+}
+
+TEST_F(CircleTest, DeleteShapeShouldThrowException)
+{
+    Circle *other = new Circle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(3, 7)));
+
+    ASSERT_ANY_THROW(circle->deleteShape(other));
+}
+
 TEST_F(CircleTest, GetPoints)
 {
     std::set<const Point *> points = circle->getPoints();
