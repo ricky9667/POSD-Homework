@@ -91,4 +91,6 @@ TEST_F(CircleTest, AcceptDoesNotThrowException)
 
     ShapeVisitor *collisionDetector = new CollisionDetector(other);
     ASSERT_NO_THROW(circle->accept(collisionDetector));
+
+    delete other;
 }

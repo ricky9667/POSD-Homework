@@ -97,4 +97,6 @@ TEST_F(TriangleTest, AcceptDoesNotThrowException)
     
     ShapeVisitor *collisionDetector = new CollisionDetector(other);
     ASSERT_NO_THROW(triangle->accept(collisionDetector));
+
+    delete other;
 }

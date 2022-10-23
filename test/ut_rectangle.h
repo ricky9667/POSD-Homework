@@ -102,4 +102,6 @@ TEST_F(RectangleTest, AcceptDoesNotThrowException)
 
     ShapeVisitor *collisionDetector = new CollisionDetector(other);
     ASSERT_NO_THROW(rectangle->accept(collisionDetector));
+
+    delete other;
 }

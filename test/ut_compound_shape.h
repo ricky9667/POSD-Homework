@@ -141,4 +141,6 @@ TEST_F(CompoundShapeTest, AcceptDoesNotThrowException)
 
     ShapeVisitor *collisionDetector = new CollisionDetector(other);
     ASSERT_NO_THROW(compoundShape->accept(collisionDetector));
+
+    delete other;
 }
