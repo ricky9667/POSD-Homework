@@ -1,4 +1,5 @@
 #include <string>
+#include <set>
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/rectangle.h"
@@ -79,4 +80,16 @@ TEST_F(RectangleTest, testCreateBFSIterator)
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
     ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(RectangleTest, GetPoints)
+{
+    std::set<const Point *> points = rectangle->getPoints();
+
+    ASSERT_EQ(4, points.size());
+    // ASSERT_FALSE(points.find(p1) == points.end());
+    // ASSERT_FALSE(points.find(p2) == points.end());
+    // ASSERT_FALSE(points.find(p3) == points.end());
+    // ASSERT_FALSE(points.find(new Point(2.03, 3.97)) == points.end());
+    // ASSERT_TRUE(points.find(new Point(-100, 100)) == points.end());
 }

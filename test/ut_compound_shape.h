@@ -1,3 +1,4 @@
+#include <set>
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/shape.h"
@@ -119,4 +120,14 @@ TEST_F(CompoundShapeTest, testCreateBFSIterator)
     ASSERT_EQ(c1, iterator->currentItem());
     iterator->next();
     ASSERT_EQ(r1, iterator->currentItem());
+}
+
+TEST_F(CompoundShapeTest, GetPoints)
+{
+    Shape* shapes[] = {c1, r1};
+    CompoundShape* compoundShape = new CompoundShape(shapes, 2);
+    std::set<const Point *> points = compoundShape->getPoints();
+    
+    int expectedSize = c1->getPoints().size() + r1->getPoints().size();
+    ASSERT_EQ(expectedSize, points.size());
 }

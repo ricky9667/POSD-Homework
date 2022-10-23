@@ -6,12 +6,14 @@
 #include "two_dimensional_vector.h"
 #include "iterator/iterator.h"
 #include "iterator/factory/iterator_factory.h"
+#include "visitor/shape_visitor.h"
 
 class Triangle : public Shape
 {
 private:
     TwoDimensionalVector *_v1;
     TwoDimensionalVector *_v2;
+    std::set<const Point *> _points;
 
     const double _cos() const
     {
@@ -21,6 +23,14 @@ private:
     const double _sin() const
     {
         return sqrt(1 - _cos() * _cos());
+    }
+
+    void _calculatePoints()
+    {
+        _points.insert(_v1->a());
+        _points.insert(_v1->b());
+        _points.insert(_v2->a());
+        _points.insert(_v2->b());
     }
 
 public:
@@ -34,6 +44,7 @@ public:
 
         _v1 = v1;
         _v2 = v2;
+        _calculatePoints();
     }
 
     double area() override
@@ -62,5 +73,15 @@ public:
     Iterator *createIterator(IteratorFactory *factory) override
     {
         return factory->createIterator();
+    }
+
+    std::set<const Point *> getPoints() override
+    {
+        return _points;
+    }
+
+    void accept(ShapeVisitor *visitor) override
+    {
+        visitor->visitTriangle(this);
     }
 };

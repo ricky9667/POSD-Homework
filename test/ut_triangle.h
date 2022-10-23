@@ -1,5 +1,5 @@
 #include <string>
-#include <iostream>
+#include <set>
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/triangle.h"
@@ -74,4 +74,15 @@ TEST_F(TriangleTest, testCreateBFSIterator)
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
     ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(TriangleTest, GetPoints)
+{
+    std::set<const Point *> points = triangle->getPoints();
+
+    ASSERT_EQ(3, points.size());
+    // ASSERT_FALSE(points.find(p0) == points.end());
+    // ASSERT_FALSE(points.find(p1) == points.end());
+    // ASSERT_FALSE(points.find(p2) == points.end());
+    ASSERT_TRUE(points.find(new Point(10, 3)) == points.end());
 }

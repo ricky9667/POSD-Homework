@@ -1,3 +1,4 @@
+#include <set>
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/circle.h"
@@ -74,4 +75,11 @@ TEST_F(CircleTest, testCreateBFSIterator)
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
     ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(CircleTest, GetPoints)
+{
+    std::set<const Point *> points = circle->getPoints();
+
+    ASSERT_EQ(2, points.size());
 }
