@@ -12,6 +12,7 @@
 #include "iterator/ut_bfs_compound_iterator.h"
 #include "iterator/ut_list_compound_iterator.h"
 #include "ut_bounding_box.h"
+#include "visitor/ut_collision_detector.h"
 
 int main(int argc, char **argv)
 {
