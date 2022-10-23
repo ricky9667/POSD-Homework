@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sstream>
+#include <iomanip>
 
 class Point
 {
@@ -8,7 +9,7 @@ private:
     const double _x;
     const double _y;
 
-    const std::string doubleToString(double value, int precision) const 
+    const std::string doubleToString(double value, int precision) const
     {
         std::stringstream stream;
         stream << std::fixed << std::setprecision(precision) << value;
@@ -20,8 +21,7 @@ public:
 
     const bool operator==(const Point &other) const
     {
-        return doubleToString(_x, 2) == doubleToString(other.x(), 2) 
-            && doubleToString(_y, 2) == doubleToString(other.y(), 2);
+        return doubleToString(_x, 2) == doubleToString(other.x(), 2) && doubleToString(_y, 2) == doubleToString(other.y(), 2);
     }
 
     const double x() const

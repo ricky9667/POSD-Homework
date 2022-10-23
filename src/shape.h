@@ -1,5 +1,8 @@
 #pragma once
 
+#include <set>
+#include "point.h"
+
 class Iterator;
 class IteratorFactory;
 class ShapeVisitor;
