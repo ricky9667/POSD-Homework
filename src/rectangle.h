@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <iostream>
 #include "shape.h"
 #include "two_dimensional_vector.h"
 #include "iterator/iterator.h"
@@ -35,7 +34,6 @@ private:
             else
                 x += point->x(), y += point->y();
         }
-        std::cout << "x = " << x << ", y = " << y << std::endl;
         _points.insert(new Point(x, y));
     }
 
