@@ -93,3 +93,13 @@ TEST_F(RectangleTest, GetPoints)
     // ASSERT_FALSE(points.find(new Point(2.03, 3.97)) == points.end());
     // ASSERT_TRUE(points.find(new Point(-100, 100)) == points.end());
 }
+
+TEST_F(RectangleTest, AcceptDoesNotThrowException)
+{
+    Rectangle *other = new Rectangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(6, 6)),
+        new TwoDimensionalVector(new Point(0, 0), new Point(-3, 3)));
+
+    ShapeVisitor *collisionDetector = new CollisionDetector(other);
+    ASSERT_NO_THROW(rectangle->accept(collisionDetector));
+}

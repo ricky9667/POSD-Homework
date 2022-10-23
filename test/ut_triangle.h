@@ -5,6 +5,8 @@
 #include "../src/triangle.h"
 #include "../src/iterator/factory/dfs_iterator_factory.h"
 #include "../src/iterator/factory/bfs_iterator_factory.h"
+#include "../src/visitor/shape_visitor.h"
+#include "../src/visitor/collision_detector.h"
 
 class TriangleTest : public ::testing::Test
 {
@@ -85,4 +87,14 @@ TEST_F(TriangleTest, GetPoints)
     // ASSERT_FALSE(points.find(p1) == points.end());
     // ASSERT_FALSE(points.find(p2) == points.end());
     ASSERT_TRUE(points.find(new Point(10, 3)) == points.end());
+}
+
+TEST_F(TriangleTest, AcceptDoesNotThrowException)
+{
+    Triangle *other = new Triangle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(-3, 7.2)),
+        new TwoDimensionalVector(new Point(0, 0), new Point(4.54, -1)));
+    
+    ShapeVisitor *collisionDetector = new CollisionDetector(other);
+    ASSERT_NO_THROW(triangle->accept(collisionDetector));
 }

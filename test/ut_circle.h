@@ -83,3 +83,12 @@ TEST_F(CircleTest, GetPoints)
 
     ASSERT_EQ(2, points.size());
 }
+
+TEST_F(CircleTest, AcceptDoesNotThrowException)
+{
+    Circle *other = new Circle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(3, 7)));
+
+    ShapeVisitor *collisionDetector = new CollisionDetector(other);
+    ASSERT_NO_THROW(circle->accept(collisionDetector));
+}
