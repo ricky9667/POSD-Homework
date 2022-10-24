@@ -106,10 +106,10 @@ TEST_F(BoundingBoxTest, BoxesCollideShouldWorkAsExpected)
 
 TEST_F(BoundingBoxTest, BoxesDoNotCollideShouldWorkAsExpected)
 {
-    Point *points1[] = {p1, p4};
-    Point *points2[] = {p0, p2, p3, p5};
-    std::set<const Point *> pointsSet1(points1, points1 + 2);
-    std::set<const Point *> pointsSet2(points2, points2 + 4);
+    Point *points1[] = {p1};
+    Point *points2[] = {p0, p2, p3, p4, p5};
+    std::set<const Point *> pointsSet1(points1, points1 + 1);
+    std::set<const Point *> pointsSet2(points2, points2 + 5);
     BoundingBox *boundingBox1 = new BoundingBox(pointsSet1);
     BoundingBox *boundingBox2 = new BoundingBox(pointsSet2);
 
