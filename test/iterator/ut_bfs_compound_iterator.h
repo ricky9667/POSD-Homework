@@ -76,20 +76,20 @@ protected:
     }
 };
 
-TEST_F(BFSCompoundIteratorTest, testConstructor)
+TEST_F(BFSCompoundIteratorTest, ConstructorShouldNotThrowException)
 {
     Shape *shapes[] = {c1, r1};
     ASSERT_NO_THROW(new BFSCompoundIterator(shapes, shapes + 2));
 }
 
-TEST_F(BFSCompoundIteratorTest, testFirst)
+TEST_F(BFSCompoundIteratorTest, FirstShouldPointToFirstItem)
 {
     Iterator *iterator = com1->createIterator(new BFSIteratorFactory());
-    iterator->first();
+    ASSERT_NO_THROW(iterator->first());
     ASSERT_EQ(com2, iterator->currentItem());
 }
 
-TEST_F(BFSCompoundIteratorTest, testCurrentItem)
+TEST_F(BFSCompoundIteratorTest, IteratorNavigationWorksExpectedly)
 {
     Iterator *iterator = com1->createIterator(new BFSIteratorFactory());
     ASSERT_NO_THROW(iterator->first());
@@ -122,7 +122,7 @@ TEST_F(BFSCompoundIteratorTest, testCurrentItem)
     ASSERT_TRUE(iterator->isDone());
 }
 
-TEST_F(BFSCompoundIteratorTest, testIsDone)
+TEST_F(BFSCompoundIteratorTest, IsDoneShowIteratorStatusExpectedly)
 {
     Iterator *iterator = com2->createIterator(new BFSIteratorFactory());
     iterator->first();

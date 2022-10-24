@@ -31,12 +31,12 @@ protected:
     }
 };
 
-TEST_F(CircleTest, testCircleRadius)
+TEST_F(CircleTest, CircleRadiusShouldBeCorrect)
 {
     ASSERT_NEAR(vector->length(), circle->radius(), 0.001);
 }
 
-TEST_F(CircleTest, testCircleArea)
+TEST_F(CircleTest, CircleAreaCalculationShouldBeCorrect)
 {
     TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
     Circle *circle = new Circle(vector);
@@ -44,7 +44,7 @@ TEST_F(CircleTest, testCircleArea)
     ASSERT_NEAR(1.6027, circle->area(), 0.001);
 }
 
-TEST_F(CircleTest, testCirclePerimeter)
+TEST_F(CircleTest, CirclePerimeterCalculationShouldBeCorrect)
 {
     TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
     Circle *circle = new Circle(vector);
@@ -52,7 +52,7 @@ TEST_F(CircleTest, testCirclePerimeter)
     ASSERT_NEAR(4.4877, circle->perimeter(), 0.001);
 }
 
-TEST_F(CircleTest, testCircleInfo)
+TEST_F(CircleTest, CircleInfoShouldWorkExpectedly)
 {
     TwoDimensionalVector *vector = new TwoDimensionalVector(new Point(-4.284, 0.264), new Point(-4.827, 0.728));
     Circle *circle = new Circle(vector);
@@ -61,7 +61,7 @@ TEST_F(CircleTest, testCircleInfo)
     ASSERT_EQ(expectedInfo, circle->info());
 }
 
-TEST_F(CircleTest, testCreateDFSIterator)
+TEST_F(CircleTest, DFSIterationInCircleShouldThrowException)
 {
     Iterator *iterator = circle->createIterator(new DFSIteratorFactory());
 
@@ -70,7 +70,7 @@ TEST_F(CircleTest, testCreateDFSIterator)
     ASSERT_TRUE(iterator->isDone());
 }
 
-TEST_F(CircleTest, testCreateBFSIterator)
+TEST_F(CircleTest, BFSIterationInCircleShouldThrowException)
 {
     Iterator *iterator = circle->createIterator(new BFSIteratorFactory());
 

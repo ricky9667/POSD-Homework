@@ -36,29 +36,29 @@ protected:
     }
 };
 
-TEST_F(RectangleTest, testRectangleGetters)
+TEST_F(RectangleTest, RectangleGettersShouldWorkExpectedly)
 {
     ASSERT_EQ(lengthVector->length(), rectangle->length());
     ASSERT_EQ(widthVector->length(), rectangle->width());
 }
 
-TEST_F(RectangleTest, testRectangleArea)
+TEST_F(RectangleTest, RectangleAreaCalculationShouldBeCorrect)
 {
     ASSERT_NEAR(12.5309, rectangle->area(), 0.001);
 }
 
-TEST_F(RectangleTest, testRectanglePerimeter)
+TEST_F(RectangleTest, RectanglePerimeterCalculationShouldBeCorrect)
 {
     ASSERT_NEAR(14.1596, rectangle->perimeter(), 0.001);
 }
 
-TEST_F(RectangleTest, testRectangleInfo)
+TEST_F(RectangleTest, RectangleInfoShouldWorkExpectedly)
 {
     std::string expectedInfo = "Rectangle (Vector ((-2.00, 1.00), (1.50, 0.47)), Vector ((-2.00, 1.00), (-1.47, 4.50)))";
     ASSERT_EQ(expectedInfo, rectangle->info());
 }
 
-TEST_F(RectangleTest, testRectangleNotOrthogonal)
+TEST_F(RectangleTest, RectangleWithNonOrthogonalVectorsShouldThrowException)
 {
     TwoDimensionalVector *lengthVector = new TwoDimensionalVector(new Point(-2, 1), new Point(-2, 5));
     TwoDimensionalVector *widthVector = new TwoDimensionalVector(new Point(-2, 1), new Point(-7, 2));
@@ -66,7 +66,7 @@ TEST_F(RectangleTest, testRectangleNotOrthogonal)
     ASSERT_ANY_THROW(new Rectangle(lengthVector, widthVector));
 }
 
-TEST_F(RectangleTest, testCreateDFSIterator)
+TEST_F(RectangleTest, DFSIterationInRectangleShouldThrowException)
 {
     Iterator *iterator = rectangle->createIterator(new DFSIteratorFactory());
 
@@ -75,7 +75,7 @@ TEST_F(RectangleTest, testCreateDFSIterator)
     ASSERT_TRUE(iterator->isDone());
 }
 
-TEST_F(RectangleTest, testCreateBFSIterator)
+TEST_F(RectangleTest, BFSIteratorInRectangleShouldThrowException)
 {
     Iterator *iterator = rectangle->createIterator(new BFSIteratorFactory());
 

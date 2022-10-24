@@ -50,21 +50,21 @@ protected:
     }
 };
 
-TEST_F(CompoundShapeTest, testCompoundShapeArea)
+TEST_F(CompoundShapeTest, CompoundShapeAreaCalculationShouldBeCorrect)
 {
     Shape *shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
     ASSERT_NEAR(c1->area() + r1->area(), compoundShape->area(), 0.001);
 }
 
-TEST_F(CompoundShapeTest, testCompoundShapePerimeter)
+TEST_F(CompoundShapeTest, CompoundShapePerimeterCalculationShouldBeCorrect)
 {
     Shape *shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
     ASSERT_NEAR(c1->perimeter() + r1->perimeter(), compoundShape->perimeter(), 0.001);
 }
 
-TEST_F(CompoundShapeTest, testCompoundShapeInfo)
+TEST_F(CompoundShapeTest, CompoundShapeInfoShouldWorkExpectedly)
 {
     Shape *shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
@@ -72,7 +72,7 @@ TEST_F(CompoundShapeTest, testCompoundShapeInfo)
     ASSERT_EQ(expectedInfo, compoundShape->info());
 }
 
-TEST_F(CompoundShapeTest, testAddShape)
+TEST_F(CompoundShapeTest, AddShapeShouldWorkExpectedly)
 {
     TwoDimensionalVector *vec1 = new TwoDimensionalVector(new Point(0, 0), new Point(3, 3));
     TwoDimensionalVector *vec2 = new TwoDimensionalVector(new Point(0, 0), new Point(-1, 1));
@@ -93,7 +93,7 @@ TEST_F(CompoundShapeTest, testAddShape)
     delete triangle;
 }
 
-TEST_F(CompoundShapeTest, testDeleteShape)
+TEST_F(CompoundShapeTest, DeleteShapeShouldWorkExpectedly)
 {
     TwoDimensionalVector *vec1 = new TwoDimensionalVector(new Point(0, 0), new Point(3, 3));
     TwoDimensionalVector *vec2 = new TwoDimensionalVector(new Point(0, 0), new Point(-1, 1));
@@ -115,7 +115,7 @@ TEST_F(CompoundShapeTest, testDeleteShape)
     delete triangle;
 }
 
-TEST_F(CompoundShapeTest, testCreateDFSIterator)
+TEST_F(CompoundShapeTest, DFSIteratorShouldWorkExpectedly)
 {
     Shape *shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
@@ -127,7 +127,7 @@ TEST_F(CompoundShapeTest, testCreateDFSIterator)
     ASSERT_EQ(r1, iterator->currentItem());
 }
 
-TEST_F(CompoundShapeTest, testCreateBFSIterator)
+TEST_F(CompoundShapeTest, BFSIteratorShouldWorkExpectedly)
 {
     Shape *shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);

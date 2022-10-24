@@ -1,7 +1,7 @@
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 
-TEST(TwoDimensionalVectorTest, testVectorGetters)
+TEST(TwoDimensionalVectorTest, VectorPointsShouldBeReceivedExpectedly)
 {
     Point *a = new Point(-8.42, 3.42);
     Point *b = new Point(-3.38, 4.3);
@@ -11,7 +11,7 @@ TEST(TwoDimensionalVectorTest, testVectorGetters)
     ASSERT_EQ(b, vector->b());
 }
 
-TEST(TwoDimensionalVectorTest, testVectorLength)
+TEST(TwoDimensionalVectorTest, VectorLengthCalculationShouldBeCorrect)
 {
     Point *a = new Point(-8.42, 3.42);
     Point *b = new Point(-3.38, 4.3);
@@ -20,7 +20,7 @@ TEST(TwoDimensionalVectorTest, testVectorLength)
     ASSERT_NEAR(5.116, vector->length(), 0.001);
 }
 
-TEST(TwoDimensionalVectorTest, testVectorDot)
+TEST(TwoDimensionalVectorTest, VectorDotCalculationShouldBeCorrect)
 {
     Point *a = new Point(-8.42, 3.42);
     Point *b = new Point(-3.38, 4.3);
@@ -32,7 +32,7 @@ TEST(TwoDimensionalVectorTest, testVectorDot)
     ASSERT_NEAR(-28.6304, vector1->dot(vector2), 0.001);
 }
 
-TEST(TwoDimensionalVectorTest, testVectorCross)
+TEST(TwoDimensionalVectorTest, VectorCrossCalculationShouldBeCorrect)
 {
     Point *a = new Point(-8.42, 3.42);
     Point *b = new Point(-3.38, 4.3);
@@ -44,16 +44,16 @@ TEST(TwoDimensionalVectorTest, testVectorCross)
     ASSERT_NEAR(10.0368, vector1->cross(vector2), 0.001);
 }
 
-TEST(TwoDimensionalVectorTest, testVectorInfo)
+TEST(TwoDimensionalVectorTest, VectorInfoShouldWorkExpectedly)
 {
     Point *a = new Point(-8.42, 3.42);
     Point *b = new Point(-3.38, 4.3);
     TwoDimensionalVector *vector = new TwoDimensionalVector(a, b);
-    
+
     ASSERT_EQ("Vector ((-8.42, 3.42), (-3.38, 4.30))", vector->info());
 }
 
-TEST(TwoDimensionalVectorTest, testVectorIsConnected)
+TEST(TwoDimensionalVectorTest, VectorIsConnectedShouldWorkExpectedly)
 {
     Point *a = new Point(-8.42, 3.42);
     Point *b = new Point(-3.38, 4.3);
@@ -62,9 +62,7 @@ TEST(TwoDimensionalVectorTest, testVectorIsConnected)
     TwoDimensionalVector *vector1 = new TwoDimensionalVector(a, b);
     TwoDimensionalVector *vector2 = new TwoDimensionalVector(a, c);
     TwoDimensionalVector *vector3 = new TwoDimensionalVector(c, d);
-    
+
     ASSERT_TRUE(vector1->isConnected(vector2));
     ASSERT_FALSE(vector1->isConnected(vector3));
 }
-
-

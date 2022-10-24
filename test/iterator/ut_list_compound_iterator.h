@@ -76,13 +76,13 @@ protected:
     }
 };
 
-TEST_F(ListCompoundIteratorTest, ConstructorDoesNotThrowException)
+TEST_F(ListCompoundIteratorTest, ConstructorShouldNotThrowException)
 {
     Shape *shapes[] = {c1, r1};
     ASSERT_NO_THROW(new ListCompoundIterator(shapes, shapes + 2));
 }
 
-TEST_F(ListCompoundIteratorTest, FirstDoesNotThrowAndPointsToExpectedItem)
+TEST_F(ListCompoundIteratorTest, FirstShouldPointToFirstItem)
 {
     Iterator *iterator = com3->createIterator(new ListIteratorFactory());
     ASSERT_NO_THROW(iterator->first());

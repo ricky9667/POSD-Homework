@@ -36,23 +36,23 @@ protected:
     }
 };
 
-TEST_F(TriangleTest, testTriangleArea)
+TEST_F(TriangleTest, TriangleAreaCalculationShouldBeCorrect)
 {
     ASSERT_NEAR(6, triangle->area(), 0.001);
 }
 
-TEST_F(TriangleTest, testTrianglePerimeter)
+TEST_F(TriangleTest, TrianglePerimeterCalculationShouldBeCorrect)
 {
     ASSERT_NEAR(12, triangle->perimeter(), 0.001);
 }
 
-TEST_F(TriangleTest, testTriangleInfo)
+TEST_F(TriangleTest, TriangleInfoShouldWorkExpectedly)
 {
     std::string expectedInfo = "Triangle (Vector ((0.00, 0.00), (3.00, 0.00)), Vector ((3.00, 4.00), (3.00, 0.00)))";
     ASSERT_EQ(expectedInfo, triangle->info());
 }
 
-TEST_F(TriangleTest, testTriangleParallel)
+TEST_F(TriangleTest, TriangleWithParallelVectorsShouldThrowExpection)
 {
     TwoDimensionalVector *a = new TwoDimensionalVector(new Point(0, 0), new Point(3, 1));
     TwoDimensionalVector *b = new TwoDimensionalVector(new Point(0, 0), new Point(6, 2));
@@ -60,7 +60,7 @@ TEST_F(TriangleTest, testTriangleParallel)
     ASSERT_ANY_THROW(new Triangle(a, b));
 }
 
-TEST_F(TriangleTest, testCreateDFSIterator)
+TEST_F(TriangleTest, DFSIterationInTriangleShouldThrowException)
 {
     Iterator *iterator = triangle->createIterator(new DFSIteratorFactory());
 
@@ -69,7 +69,7 @@ TEST_F(TriangleTest, testCreateDFSIterator)
     ASSERT_TRUE(iterator->isDone());
 }
 
-TEST_F(TriangleTest, testCreateBFSIterator)
+TEST_F(TriangleTest, BFSIteratorInTriangleShouldThrowException)
 {
     Iterator *iterator = triangle->createIterator(new BFSIteratorFactory());
 

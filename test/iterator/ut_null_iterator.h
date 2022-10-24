@@ -17,23 +17,22 @@ protected:
     }
 };
 
-TEST_F(NullIteratorTest, testFirst)
+TEST_F(NullIteratorTest, FirstShouldThrowException)
 {
     ASSERT_ANY_THROW(it->first());
 }
 
-TEST_F(NullIteratorTest, testCurrentItem)
+TEST_F(NullIteratorTest, CurrentItemShouldThrowException)
 {
     ASSERT_ANY_THROW(it->currentItem());
 }
 
-TEST_F(NullIteratorTest, testNext)
+TEST_F(NullIteratorTest, NextShouldThrowException)
 {
     ASSERT_ANY_THROW(it->next());
 }
 
-TEST_F(NullIteratorTest, testIsDone)
+TEST_F(NullIteratorTest, IsDoneShouldBeTrue)
 {
     ASSERT_TRUE(it->isDone());
 }
-
