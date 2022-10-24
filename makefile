@@ -1,14 +1,7 @@
 .PHONY: dirs clean stat
 
-SRC = src/point.h src/two_dimensional_vector.h src/triangle.h src/rectangle.h src/circle.h src/shape.h src/compound_shape.h src/bounding_box.h \
-		src/iterator/null_iterator.h src/iterator/dfs_compound_iterator.h src/iterator/bfs_compound_iterator.h src/iterator/list_compound_iterator.h \
-		src/iterator/factory/iterator_factory.h src/iterator/factory/dfs_iterator_factory.h src/iterator/factory/bfs_iterator_factory.h src/iterator/factory/list_iterator_factory.h \
-		src/visitor/shape_visitor.h src/visitor/collision_detector.h \
-
-TEST = test/ut_point.h test/ut_two_dimensional_vector.h test/ut_triangle.h test/ut_rectangle.h test/ut_circle.h test/ut_shape.h test/ut_compound_shape.h test/ut_bounding_box.h \
-		test/iterator/ut_null_iterator.h test/iterator/ut_dfs_compound_iterator.h test/iterator/ut_bfs_compound_iterator.h test/iterator/ut_list_compound_iterator.h \
-		test/visitor/ut_collision_detector.h \
-
+SRC = $(shell ls src/*.h src/**/*.h)
+TEST = $(shell ls test/*.h test/**/*.h)
 FACTORY = obj/dfs_iterator_factory.o obj/bfs_iterator_factory.o
 
 all: dirs ut_all
