@@ -48,9 +48,7 @@ public:
         for (; !iterator->isDone(); iterator->next())
         {
             Shape *currentShape = iterator->currentItem();
-            BoundingBox *boundingBox = new BoundingBox(currentShape->getPoints());
-            if (_targetBoundingBox->collide(boundingBox))
-                _collideResult.push_back(currentShape);
+            currentShape->accept(this);
         }
     }
 
