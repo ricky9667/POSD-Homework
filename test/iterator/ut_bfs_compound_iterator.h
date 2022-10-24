@@ -1,6 +1,6 @@
+#include "../../src/compound_shape.h"
 #include "../../src/iterator/iterator.h"
 #include "../../src/iterator/bfs_compound_iterator.h"
-#include "../../src/compound_shape.h"
 #include "../../src/iterator/factory/bfs_iterator_factory.h"
 
 class BFSCompoundIteratorTest : public ::testing::Test

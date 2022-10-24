@@ -4,6 +4,8 @@
 #include "../src/circle.h"
 #include "../src/iterator/factory/dfs_iterator_factory.h"
 #include "../src/iterator/factory/bfs_iterator_factory.h"
+#include "../src/visitor/shape_visitor.h"
+#include "../src/visitor/collision_detector.h"
 
 class CircleTest : public ::testing::Test
 {

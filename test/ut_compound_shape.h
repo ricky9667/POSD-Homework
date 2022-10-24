@@ -2,11 +2,14 @@
 #include "../src/point.h"
 #include "../src/two_dimensional_vector.h"
 #include "../src/shape.h"
-#include "../src/circle.h"
+#include "../src/triangle.h"
 #include "../src/rectangle.h"
+#include "../src/circle.h"
 #include "../src/compound_shape.h"
 #include "../src/iterator/factory/dfs_iterator_factory.h"
 #include "../src/iterator/factory/bfs_iterator_factory.h"
+#include "../src/visitor/shape_visitor.h"
+#include "../src/visitor/collision_detector.h"
 
 class CompoundShapeTest : public ::testing::Test
 {

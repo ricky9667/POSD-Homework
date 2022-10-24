@@ -1,6 +1,6 @@
+#include "../../src/compound_shape.h"
 #include "../../src/iterator/iterator.h"
 #include "../../src/iterator/list_compound_iterator.h"
-#include "../../src/compound_shape.h"
 #include "../../src/iterator/factory/list_iterator_factory.h"
 
 class ListCompoundIteratorTest : public ::testing::Test
