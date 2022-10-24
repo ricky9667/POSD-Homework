@@ -117,11 +117,6 @@ TEST_F(RectangleTest, GetPoints)
     std::set<const Point *> points = rectangle->getPoints();
 
     ASSERT_EQ(4, points.size());
-    // ASSERT_FALSE(points.find(p1) == points.end());
-    // ASSERT_FALSE(points.find(p2) == points.end());
-    // ASSERT_FALSE(points.find(p3) == points.end());
-    // ASSERT_FALSE(points.find(new Point(2.03, 3.97)) == points.end());
-    // ASSERT_TRUE(points.find(new Point(-100, 100)) == points.end());
 }
 
 TEST_F(RectangleTest, AcceptDoesNotThrowException)

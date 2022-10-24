@@ -111,10 +111,6 @@ TEST_F(TriangleTest, GetPoints)
     std::set<const Point *> points = triangle->getPoints();
 
     ASSERT_EQ(3, points.size());
-    // ASSERT_FALSE(points.find(p0) == points.end());
-    // ASSERT_FALSE(points.find(p1) == points.end());
-    // ASSERT_FALSE(points.find(p2) == points.end());
-    ASSERT_TRUE(points.find(new Point(10, 3)) == points.end());
 }
 
 TEST_F(TriangleTest, AcceptDoesNotThrowException)
