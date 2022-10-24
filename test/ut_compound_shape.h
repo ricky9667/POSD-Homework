@@ -8,6 +8,7 @@
 #include "../src/compound_shape.h"
 #include "../src/iterator/factory/dfs_iterator_factory.h"
 #include "../src/iterator/factory/bfs_iterator_factory.h"
+#include "../src/iterator/factory/list_iterator_factory.h"
 #include "../src/visitor/shape_visitor.h"
 #include "../src/visitor/collision_detector.h"
 
@@ -132,6 +133,18 @@ TEST_F(CompoundShapeTest, BFSIteratorShouldWorkExpectedly)
     Shape *shapes[] = {c1, r1};
     CompoundShape *compoundShape = new CompoundShape(shapes, 2);
     Iterator *iterator = compoundShape->createIterator(new BFSIteratorFactory());
+
+    iterator->first();
+    ASSERT_EQ(c1, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+}
+
+TEST_F(CompoundShapeTest, ListIteratorShouldWorkExpectedly)
+{
+    Shape *shapes[] = {c1, r1};
+    CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+    Iterator *iterator = compoundShape->createIterator(new ListIteratorFactory());
 
     iterator->first();
     ASSERT_EQ(c1, iterator->currentItem());

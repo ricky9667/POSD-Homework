@@ -5,6 +5,7 @@
 #include "../src/rectangle.h"
 #include "../src/iterator/factory/dfs_iterator_factory.h"
 #include "../src/iterator/factory/bfs_iterator_factory.h"
+#include "../src/iterator/factory/list_iterator_factory.h"
 #include "../src/visitor/shape_visitor.h"
 #include "../src/visitor/collision_detector.h"
 
@@ -78,6 +79,15 @@ TEST_F(RectangleTest, DFSIterationInRectangleShouldThrowException)
 TEST_F(RectangleTest, BFSIteratorInRectangleShouldThrowException)
 {
     Iterator *iterator = rectangle->createIterator(new BFSIteratorFactory());
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(RectangleTest, ListIteratorInRectangleShouldThrowException)
+{
+    Iterator *iterator = rectangle->createIterator(new ListIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());

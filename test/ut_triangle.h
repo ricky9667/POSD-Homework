@@ -5,6 +5,7 @@
 #include "../src/triangle.h"
 #include "../src/iterator/factory/dfs_iterator_factory.h"
 #include "../src/iterator/factory/bfs_iterator_factory.h"
+#include "../src/iterator/factory/list_iterator_factory.h"
 #include "../src/visitor/shape_visitor.h"
 #include "../src/visitor/collision_detector.h"
 
@@ -72,6 +73,15 @@ TEST_F(TriangleTest, DFSIterationInTriangleShouldThrowException)
 TEST_F(TriangleTest, BFSIteratorInTriangleShouldThrowException)
 {
     Iterator *iterator = triangle->createIterator(new BFSIteratorFactory());
+
+    ASSERT_ANY_THROW(iterator->currentItem());
+    ASSERT_ANY_THROW(iterator->next());
+    ASSERT_TRUE(iterator->isDone());
+}
+
+TEST_F(TriangleTest, ListIteratorInTriangleShouldThrowException)
+{
+    Iterator *iterator = triangle->createIterator(new ListIteratorFactory());
 
     ASSERT_ANY_THROW(iterator->currentItem());
     ASSERT_ANY_THROW(iterator->next());
