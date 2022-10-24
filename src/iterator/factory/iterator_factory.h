@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../iterator.h"
 #include <list>
+#include "../iterator.h"
 
 class IteratorFactory
 {

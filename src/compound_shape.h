@@ -1,7 +1,11 @@
 #pragma once
 
 #include <list>
+#include <set>
+#include "point.h"
+#include "two_dimensional_vector.h"
 #include "shape.h"
+#include "iterator/iterator.h"
 #include "iterator/factory/iterator_factory.h"
 #include "visitor/shape_visitor.h"
 

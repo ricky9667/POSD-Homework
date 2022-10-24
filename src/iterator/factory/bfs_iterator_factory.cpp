@@ -1,4 +1,4 @@
-#include "./iterator_factory.h"
+#include "iterator_factory.h"
 #include "../null_iterator.h"
 #include "../bfs_compound_iterator.h"
 

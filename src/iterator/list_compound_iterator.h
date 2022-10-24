@@ -1,9 +1,9 @@
 #pragma once
 
 #include <vector>
-
-#include "iterator.h"
+#include <string>
 #include "../shape.h"
+#include "iterator.h"
 
 class CompoundShape;
 

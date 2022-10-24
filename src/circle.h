@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cmath>
+#include "point.h"
 #include "two_dimensional_vector.h"
 #include "shape.h"
 #include "iterator/iterator.h"

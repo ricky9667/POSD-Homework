@@ -1,9 +1,8 @@
 #pragma once
 
 #include <vector>
-
-#include "iterator.h"
 #include "../shape.h"
+#include "iterator.h"
 #include "factory/bfs_iterator_factory.h"
 
 class CompoundShape;
