@@ -62,30 +62,8 @@ public:
         return _min;
     }
 
-    bool isPointInBox(Point *point)
-    {
-        if (point->x() > _max->x() || point->x() < _min->x())
-            return false;
-        if (point->y() > _max->y() || point->y() < _min->y())
-            return false;
-        return true;
-    }
-
     bool collide(BoundingBox *box)
     {
-        Point *leftBottom = new Point(_min->x(), _min->y());
-        Point *leftTop = new Point(_min->x(), _max->y());
-        Point *rightBottom = new Point(_max->x(), _min->y());
-        Point *rightTop = new Point(_max->x(), _max->y());
-
-        Point *boundaries[] = {leftBottom, leftTop, rightBottom, rightTop};
-        for (int index = 0; index < 4; index++)
-        {
-            Point *point = boundaries[index];
-            if (box->isPointInBox(point))
-                return true;
-        }
-
-        return false;
+        return !(_max->x() < box->min()->x() || _min->x() > box->max()->x() || _max->y() < box->min()->y() || _min->y() > box->max()->y());
     }
 };
