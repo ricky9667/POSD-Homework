@@ -115,3 +115,15 @@ TEST_F(BoundingBoxTest, BoxesDoNotCollideShouldWorkAsExpected)
 
     ASSERT_FALSE(boundingBox1->collide(boundingBox2));
 }
+
+TEST_F(BoundingBoxTest, DistanceShouldWorkExpectedly)
+{
+    Point *points1[] = {p0};
+    Point *points2[] = {p2, p3};
+    std::set<const Point *> pointsSet1(points1, points1 + 1);
+    std::set<const Point *> pointsSet2(points2, points2 + 2);
+    BoundingBox *boundingBox1 = new BoundingBox(pointsSet1);
+    BoundingBox *boundingBox2 = new BoundingBox(pointsSet2);
+
+    ASSERT_NEAR(17.629, boundingBox1->distance(boundingBox2), 0.001);
+}
