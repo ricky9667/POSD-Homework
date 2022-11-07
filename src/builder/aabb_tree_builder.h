@@ -24,7 +24,22 @@ public:
         }
         else
         {
-            // closest shape finder
+            ClosestShapeFinder *visitor = new ClosestShapeFinder(triangle);
+            _tree->accept(visitor);
+
+            Shape *closestShape = visitor->getClosestShape();
+            CompoundShape *parent = visitor->getParent();
+
+            Shape *shapes[] = {closestShape, triangle};
+            CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+
+            if (parent == nullptr)
+                _tree = compoundShape;
+            else
+            {
+                parent->deleteShape(closestShape);
+                parent->addShape(compoundShape);
+            }
         }
     }
 
@@ -38,7 +53,22 @@ public:
         }
         else
         {
-            // closest shape finder
+            ClosestShapeFinder *visitor = new ClosestShapeFinder(circle);
+            _tree->accept(visitor);
+
+            Shape *closestShape = visitor->getClosestShape();
+            CompoundShape *parent = visitor->getParent();
+
+            Shape *shapes[] = {closestShape, circle};
+            CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+
+            if (parent == nullptr)
+                _tree = compoundShape;
+            else
+            {
+                parent->deleteShape(closestShape);
+                parent->addShape(compoundShape);
+            }
         }
     }
 
@@ -54,7 +84,22 @@ public:
         }
         else
         {
-            // closest shape finder
+            ClosestShapeFinder *visitor = new ClosestShapeFinder(rectangle);
+            _tree->accept(visitor);
+
+            Shape *closestShape = visitor->getClosestShape();
+            CompoundShape *parent = visitor->getParent();
+
+            Shape *shapes[] = {closestShape, rectangle};
+            CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+
+            if (parent == nullptr)
+                _tree = compoundShape;
+            else
+            {
+                parent->deleteShape(closestShape);
+                parent->addShape(compoundShape);
+            }
         }
     }
 
