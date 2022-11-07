@@ -14,6 +14,7 @@
 #include "ut_bounding_box.h"
 #include "visitor/ut_collision_detector.h"
 #include "visitor/ut_closest_shape_finder.h"
+#include "builder/ut_aabb_tree_builder.h"
 
 int main(int argc, char **argv)
 {
