@@ -174,3 +174,18 @@ TEST_F(CompoundShapeTest, AcceptDoesNotThrowException)
 
     delete other;
 }
+
+TEST_F(CompoundShapeTest, ReplaceWorksExpectedly)
+{
+    Shape *shapes[] = {c1, r1};
+    CompoundShape *compoundShape = new CompoundShape(shapes, 2);
+    Circle *other = new Circle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(3, 7)));
+    compoundShape->replace(c1, other);
+
+    Iterator *iterator = compoundShape->createIterator(new ListIteratorFactory());
+    ASSERT_EQ(other, iterator->currentItem());
+    iterator->next();
+    ASSERT_EQ(r1, iterator->currentItem());
+    iterator->next();
+}
