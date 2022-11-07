@@ -1,6 +1,7 @@
 #pragma once
 
 #include "iterator_factory.h"
+#include "../illegal_node_iterator.h"
 
 class IllegalNodeIteratorFactory : public IteratorFactory
 {
