@@ -6,6 +6,9 @@
 #include "../../src/compound_shape.h"
 #include "../../src/visitor/shape_visitor.h"
 #include "../../src/builder/aabb_tree_builder.h"
+#include "../../src/iterator/iterator.h"
+#include "../../src/iterator/dfs_compound_iterator.h"
+#include "../../src/iterator/factory/dfs_iterator_factory.h"
 
 class AABBTreeBuilderTest : public ::testing::Test
 {
@@ -56,4 +59,24 @@ TEST_F(AABBTreeBuilderTest, InsertRectangleShouldWorkExpectedly)
 
     builder.insertRectangle(commonPoint, v1Point, v2Point);
     ASSERT_EQ(triangle->info(), builder.getTree()->info());
+}
+
+TEST_F(AABBTreeBuilderTest, InsertShapeAndGetTreeShouldWorkExpectedly)
+{
+    Circle *circle = new Circle(
+        new TwoDimensionalVector(new Point(0, 0), new Point(0, 3)));
+    Triangle *triangle = new Triangle(
+        new TwoDimensionalVector(new Point(1.5, 1.7), new Point(6, 3.2)),
+        new TwoDimensionalVector(new Point(1.5, 1.7), new Point(1, 4.8)));
+    Shape *shapes[] = {circle, triangle};
+    CompoundShape *expectedShape = new CompoundShape(shapes, 2);
+
+    AABBTreeBuilder builder;
+    builder.insertCircle(
+        new Point(0, 0), new Point(0, 3));
+    builder.insertTriangle(
+        new Point(1.5, 1.7), new Point(6, 3.2), new Point(1, 4.8));
+
+    Shape *root = builder.getTree();
+    ASSERT_EQ(expectedShape->info(), root->info());
 }
