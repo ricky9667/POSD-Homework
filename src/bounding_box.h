@@ -4,6 +4,7 @@
 #include <string>
 #include "point.h"
 #include "shape.h"
+#include "two_dimensional_vector.h"
 
 class BoundingBox
 {
@@ -65,5 +66,12 @@ public:
     bool collide(BoundingBox *box)
     {
         return !(_max->x() < box->min()->x() || _min->x() > box->max()->x() || _max->y() < box->min()->y() || _min->y() > box->max()->y());
+    }
+
+    double distance(BoundingBox *box)
+    {
+        TwoDimensionalVector *maxPointVector = new TwoDimensionalVector(_max, box->max());
+        TwoDimensionalVector *minPointVector = new TwoDimensionalVector(_min, box->min());
+        return maxPointVector->length() + minPointVector->length();
     }
 };
