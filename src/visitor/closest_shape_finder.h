@@ -10,8 +10,8 @@
 class ClosestShapeFinder : public ShapeVisitor
 {
 private:
-    Shape *_closestShape;
-    CompoundShape *_closestParent;
+    Shape *_closestShape = nullptr;
+    CompoundShape *_closestParent = nullptr;
     BoundingBox *_targetBoundingBox, *_closestBoundingBox;
 
 public:
@@ -23,7 +23,12 @@ public:
     void visitCircle(Circle *circle) override
     {
         BoundingBox *circleBoundingBox = new BoundingBox(circle->getPoints());
-        if (_targetBoundingBox->distance(circleBoundingBox) < _targetBoundingBox->distance(_closestBoundingBox))
+        if (_closestShape == nullptr)
+        {
+            _closestShape = circle;
+            _closestBoundingBox = circleBoundingBox;
+        }
+        else if (_targetBoundingBox->distance(circleBoundingBox) < _targetBoundingBox->distance(_closestBoundingBox))
         {
             _closestShape = circle;
             _closestBoundingBox = circleBoundingBox;
@@ -33,16 +38,26 @@ public:
     void visitTriangle(Triangle *triangle) override
     {
         BoundingBox *triangleBoundingBox = new BoundingBox(triangle->getPoints());
-        if (_targetBoundingBox->distance(triangleBoundingBox) < _targetBoundingBox->distance(_closestBoundingBox))
+        if (_closestShape == nullptr)
         {
             _closestShape = triangle;
-            _closestBoundingBox = triangle;
+            _closestBoundingBox = triangleBoundingBox;
+        }
+        else if (_targetBoundingBox->distance(triangleBoundingBox) < _targetBoundingBox->distance(_closestBoundingBox))
+        {
+            _closestShape = triangle;
+            _closestBoundingBox = triangleBoundingBox;
         }
     }
 
     void visitRectangle(Rectangle *rectangle) override
     {
         BoundingBox *rectangleBoundingBox = new BoundingBox(rectangle->getPoints());
+        if (_closestShape == nullptr)
+        {
+            _closestShape = rectangle;
+            _closestBoundingBox = rectangleBoundingBox;
+        }
         if (_targetBoundingBox->distance(rectangleBoundingBox) < _targetBoundingBox->distance(_closestBoundingBox))
         {
             _closestShape = rectangle;

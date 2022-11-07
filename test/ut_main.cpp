@@ -13,6 +13,7 @@
 #include "iterator/ut_list_compound_iterator.h"
 #include "ut_bounding_box.h"
 #include "visitor/ut_collision_detector.h"
+#include "visitor/ut_closest_shape_finder.h"
 
 int main(int argc, char **argv)
 {
