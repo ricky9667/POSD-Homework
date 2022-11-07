@@ -9,5 +9,5 @@ Iterator *DFSIteratorFactory::createIterator()
 
 Iterator *DFSIteratorFactory::createIterator(std::list<Shape *>::const_iterator begin, std::list<Shape *>::const_iterator end)
 {
-    return new DFSCompoundIterator(begin, end);
+    return new DFSCompoundIterator<std::list<Shape *>::const_iterator>(begin, end);
 }

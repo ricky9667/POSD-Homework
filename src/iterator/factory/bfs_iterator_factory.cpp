@@ -9,5 +9,5 @@ Iterator *BFSIteratorFactory::createIterator()
 
 Iterator *BFSIteratorFactory::createIterator(std::list<Shape *>::const_iterator begin, std::list<Shape *>::const_iterator end)
 {
-    return new BFSCompoundIterator(begin, end);
+    return new BFSCompoundIterator<std::list<Shape *>::const_iterator>(begin, end);
 }

@@ -79,7 +79,7 @@ protected:
 TEST_F(ListCompoundIteratorTest, ConstructorShouldNotThrowException)
 {
     Shape *shapes[] = {c1, r1};
-    ASSERT_NO_THROW(new ListCompoundIterator(shapes, shapes + 2));
+    ASSERT_NO_THROW(new ListCompoundIterator<Shape**>(shapes, shapes + 2));
 }
 
 TEST_F(ListCompoundIteratorTest, FirstShouldPointToFirstItem)

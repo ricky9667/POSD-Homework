@@ -79,7 +79,7 @@ protected:
 TEST_F(DFSCompoundIteratorTest, ConstructorShouldNotThrowException)
 {
     Shape *shapes[] = {c1, r1};
-    ASSERT_NO_THROW(new DFSCompoundIterator(shapes, shapes + 2));
+    ASSERT_NO_THROW(new DFSCompoundIterator<Shape **>(shapes, shapes + 2));
 }
 
 TEST_F(DFSCompoundIteratorTest, FirstShouldPointToFirstItem)
