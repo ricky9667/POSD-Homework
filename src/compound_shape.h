@@ -95,4 +95,17 @@ public:
     {
         visitor->visitCompoundShape(this);
     }
+
+    void replace(Shape *oldShape, Shape *newShape)
+    {
+        for (std::list<Shape *>::iterator it = _shapes.begin(); it != _shapes.end(); it++)
+        {
+            if (*it == oldShape)
+            {
+                _shapes.insert(it, newShape);
+                _shapes.erase(it);
+                break;
+            }
+        }
+    }
 };
