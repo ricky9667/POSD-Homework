@@ -12,7 +12,7 @@ private:
     Shape *_tree = nullptr;
 
 public:
-    void insertTriangle(Point *common_point, Point *v1_point, Point *v2_point)
+    void insertTriangle(const Point *common_point, const Point *v1_point, const Point *v2_point)
     {
         Triangle *triangle = new Triangle(
             new TwoDimensionalVector(common_point, v1_point),
@@ -30,8 +30,7 @@ public:
 
     void insertCircle(const Point *center, const Point *to_radius)
     {
-        Circle *circle = new Circle(
-            new TwoDimensionalVector(center, to_radius));
+        Circle *circle = new Circle(new TwoDimensionalVector(center, to_radius));
 
         if (_tree == nullptr)
         {
