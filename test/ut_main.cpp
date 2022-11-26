@@ -17,6 +17,7 @@
 #include "visitor/ut_illegal_node_checker.h"
 #include "builder/ut_aabb_tree_builder.h"
 #include "builder/ut_scanner.h"
+#include "builder/ut_shape_builder.h"
 
 int main(int argc, char **argv)
 {
