@@ -99,3 +99,15 @@ TEST_F(ScannerTest, IsDoneShouldWorkExpectedly)
     ASSERT_EQ(rightParenthesisToken, scanner.next());
     ASSERT_TRUE(scanner.isDone());
 }
+
+TEST_F(ScannerTest, ScannerShouldThrowExceptionWhenIsDone)
+{
+    std::string inputString = "Circle";
+    Scanner scanner(inputString);
+
+    ASSERT_FALSE(scanner.isDone());
+    ASSERT_EQ(circleToken, scanner.next());
+    ASSERT_TRUE(scanner.isDone());
+    ASSERT_ANY_THROW(scanner.next());
+    ASSERT_ANY_THROW(scanner.nextDouble());
+}
