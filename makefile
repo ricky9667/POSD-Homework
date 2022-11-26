@@ -2,7 +2,7 @@
 
 SRC = $(shell ls src/*.h src/**/*.h)
 TEST = $(shell ls test/*.h test/**/*.h)
-FACTORY = obj/iterator_factory.o obj/dfs_iterator_factory.o obj/bfs_iterator_factory.o 
+FACTORY = obj/iterator_factory.o obj/dfs_iterator_factory.o obj/bfs_iterator_factory.o obj/list_iterator_factory.o
 
 all: dirs ut_all
 
