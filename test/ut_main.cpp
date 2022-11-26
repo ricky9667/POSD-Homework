@@ -18,6 +18,7 @@
 #include "builder/ut_aabb_tree_builder.h"
 #include "builder/ut_scanner.h"
 #include "builder/ut_shape_builder.h"
+#include "builder/ut_shape_parser.h"
 
 int main(int argc, char **argv)
 {
