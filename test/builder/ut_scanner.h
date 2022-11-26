@@ -4,11 +4,11 @@
 class ScannerTest : public ::testing::Test
 {
 protected:
-    std::string vectorToken = "Vector";
-    std::string circleToken = "Circle";
-    std::string leftParenthesisToken = "(";
-    std::string rightParenthesisToken = ")";
-    std::string commaToken = ",";
+    const std::string vectorToken = "Vector";
+    const std::string circleToken = "Circle";
+    const std::string leftParenthesisToken = "(";
+    const std::string rightParenthesisToken = ")";
+    const std::string commaToken = ",";
 
     void SetUp() {}
 
