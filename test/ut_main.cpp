@@ -11,6 +11,7 @@
 #include "iterator/ut_dfs_compound_iterator.h"
 #include "iterator/ut_bfs_compound_iterator.h"
 #include "iterator/ut_list_compound_iterator.h"
+#include "iterator/factory/ut_iterator_factory.h"
 #include "ut_bounding_box.h"
 #include "visitor/ut_collision_detector.h"
 #include "visitor/ut_closest_shape_finder.h"
