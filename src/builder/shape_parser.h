@@ -16,7 +16,7 @@ private:
     std::string _input;
     const std::string _leftParenthesis = "(", _rightParenthesis = ")", _comma = ",";
 
-    void _scanLeftParenthesis()
+    void _parseLeftParenthesis()
     {
         std::string token = _scanner->next();
         if (token != _leftParenthesis)
@@ -27,7 +27,7 @@ private:
         }
     }
 
-    void _scanRightParenthesis()
+    void _parseRightParenthesis()
     {
         std::string token = _scanner->next();
         if (token != _rightParenthesis)
@@ -38,7 +38,7 @@ private:
         }
     }
 
-    void _scanComma()
+    void _parseComma()
     {
         std::string token = _scanner->next();
         if (token != _comma)
@@ -49,7 +49,7 @@ private:
         }
     }
 
-    std::pair<Point *, Point *> _scanVectorPoints()
+    std::pair<Point *, Point *> _parseVectorWithPoints()
     {
         std::string token = _scanner->next();
         if (token != "Vector")
@@ -59,25 +59,55 @@ private:
             throw std::string("Failed expecting a Vector when scanning.");
         }
 
-        _scanLeftParenthesis();
+        _parseLeftParenthesis();
 
-        _scanLeftParenthesis();
+        _parseLeftParenthesis();
         double x1 = _scanner->nextDouble();
-        _scanComma();
+        _parseComma();
         double y1 = _scanner->nextDouble();
-        _scanRightParenthesis();
+        _parseRightParenthesis();
 
-        _scanComma();
+        _parseComma();
 
-        _scanLeftParenthesis();
+        _parseLeftParenthesis();
         double x2 = _scanner->nextDouble();
-        _scanComma();
+        _parseComma();
         double y2 = _scanner->nextDouble();
-        _scanRightParenthesis();
+        _parseRightParenthesis();
 
-        _scanRightParenthesis();
+        _parseRightParenthesis();
 
         return std::make_pair(new Point(x1, y1), new Point(x2, y2));
+    }
+
+    void _parseCircle()
+    {
+        _parseLeftParenthesis();
+        std::pair<Point *, Point *> vectorPoints = _parseVectorWithPoints();
+        _parseRightParenthesis();
+        _builder->buildCircle(vectorPoints.first, vectorPoints.second);
+    }
+
+    void _parseTriangle()
+    {
+        _parseLeftParenthesis();
+        std::pair<Point *, Point *> v1Points = _parseVectorWithPoints();
+        _parseComma();
+        std::pair<Point *, Point *> v2Points = _parseVectorWithPoints();
+        _parseRightParenthesis();
+
+
+        _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.second);
+    }
+
+    void _parseRectangle()
+    {
+        _parseLeftParenthesis();
+        std::pair<Point *, Point *> lengthPoints = _parseVectorWithPoints();
+        _parseComma();
+        std::pair<Point *, Point *> widthPoints = _parseVectorWithPoints();
+        _parseRightParenthesis();
+        _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.second);
     }
 
 public:
@@ -94,46 +124,23 @@ public:
         while (!_scanner->isDone())
         {
             std::string token = _scanner->next();
+            std::cout << "Current token: " << token << std::endl;
+
             if (token == "CompoundShape")
-            {
                 _builder->buildCompoundShape();
-            }
             else if (token == "Circle")
-            {
-                _scanLeftParenthesis();
-                std::pair<Point *, Point *> vectorPoints = _scanVectorPoints();
-                _scanRightParenthesis();
-                _builder->buildCircle(vectorPoints.first, vectorPoints.second);
-            }
+                _parseCircle();
             else if (token == "Triangle")
-            {
-                _scanLeftParenthesis();
-                std::pair<Point *, Point *> v1Points = _scanVectorPoints();
-                _scanComma();
-                std::pair<Point *, Point *> v2Points = _scanVectorPoints();
-                _scanRightParenthesis();
-                _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.second);
-            }
+                _parseTriangle();
             else if (token == "Rectangle")
-            {
-                _scanLeftParenthesis();
-                std::pair<Point *, Point *> lengthPoints = _scanVectorPoints();
-                _scanComma();
-                std::pair<Point *, Point *> widthPoints = _scanVectorPoints();
-                _scanRightParenthesis();
-                _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.second);
-            }
+                _parseRectangle();
             else if (token == _leftParenthesis)
             {
-                // initially left blank
             }
             else if (token == _rightParenthesis)
-            {
                 _builder->buildCompoundEnd();
-            }
             else if (token == _comma)
             {
-                // initially left blank
             }
             else
             {
