@@ -34,6 +34,8 @@ public:
     std::string next()
     {
         _skipWhiteSpace();
+        if (isDone())
+            throw std::string("Scanner has navigated to the end of the input.");
 
         for (std::string token : _tokens)
         {
@@ -50,12 +52,14 @@ public:
 
     double nextDouble()
     {
-        std::string s = "";
         _skipWhiteSpace();
+        if (isDone())
+            throw std::string("Scanner has navigated to the end of the input.");
 
+        std::string s = "";
         if (_input[_pos] == '-')
             s += _input[_pos++];
-        
+
         while (_isNumber(_input[_pos]))
             s += _input[_pos++];
 
