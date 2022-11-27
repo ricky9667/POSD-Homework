@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <utility>
@@ -96,8 +97,19 @@ private:
         std::pair<Point *, Point *> v2Points = _parseVectorWithPoints();
         _parseRightParenthesis();
 
-
-        _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.second);
+        if (*(v1Points.first) == *(v2Points.first))
+            _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.second);
+        else if (*(v1Points.first) == *(v2Points.second))
+            _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.first);
+        else if (*(v1Points.second) == *(v2Points.first))
+            _builder->buildTriangle(v1Points.second, v1Points.first, v2Points.second);
+        else if (*(v1Points.second) == *(v2Points.second))
+            _builder->buildTriangle(v1Points.second, v1Points.first, v2Points.first);
+        else
+        {
+            std::cout << "Illegal case for Triangle\n";
+            throw std::string("Illegal case for Triangle.");
+        }
     }
 
     void _parseRectangle()
@@ -107,7 +119,20 @@ private:
         _parseComma();
         std::pair<Point *, Point *> widthPoints = _parseVectorWithPoints();
         _parseRightParenthesis();
-        _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.second);
+
+        if (*(lengthPoints.first) == *(widthPoints.first))
+            _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.second);
+        else if (*(lengthPoints.first) == *(widthPoints.second))
+            _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.first);
+        else if (*(lengthPoints.second) == *(widthPoints.first))
+            _builder->buildRectangle(lengthPoints.second, lengthPoints.first, widthPoints.second);
+        else if (*(lengthPoints.second) == *(widthPoints.second))
+            _builder->buildRectangle(lengthPoints.second, lengthPoints.first, widthPoints.first);
+        else
+        {
+            std::cout << "Illegal case for Rectangle\n";
+            throw std::string("Illegal case for Rectangle.");
+        }
     }
 
 public:
@@ -124,8 +149,6 @@ public:
         while (!_scanner->isDone())
         {
             std::string token = _scanner->next();
-            std::cout << "Current token: " << token << std::endl;
-
             if (token == "CompoundShape")
                 _builder->buildCompoundShape();
             else if (token == "Circle")
