@@ -32,7 +32,8 @@ TEST_F(ShapeParserTest, ParseTriangleShouldWorkExpectedly)
     std::vector<Shape *> result = parser.getResult();
 
     ASSERT_EQ(1, result.size());
-    ASSERT_EQ(triangleInput, result.at(0)->info());
+    ASSERT_NEAR(6, result.at(0)->area(), 0.001);
+    ASSERT_NEAR(12, result.at(0)->perimeter(), 0.001);
 }
 
 TEST_F(ShapeParserTest, ParseRectangleShouldWorkExpectedly)
@@ -42,7 +43,8 @@ TEST_F(ShapeParserTest, ParseRectangleShouldWorkExpectedly)
     std::vector<Shape *> result = parser.getResult();
 
     ASSERT_EQ(1, result.size());
-    ASSERT_EQ(rectangleInput, result.at(0)->info());
+    ASSERT_NEAR(12.5309, result.at(0)->area(), 0.001);
+    ASSERT_NEAR(14.1596, result.at(0)->perimeter(), 0.001);
 }
 
 TEST_F(ShapeParserTest, ParseCompoundShapeShouldWorkExpectedly)
