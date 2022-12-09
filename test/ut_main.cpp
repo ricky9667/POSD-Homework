@@ -20,6 +20,9 @@
 #include "builder/ut_scanner.h"
 #include "builder/ut_shape_builder.h"
 #include "builder/ut_shape_parser.h"
+#include "utils/ut_file_reader.h"
+#include "graphics/ut_sdl_adapter.h"
+#include "graphics/mock_sdl_renderer.h"
 
 int main(int argc, char **argv)
 {
