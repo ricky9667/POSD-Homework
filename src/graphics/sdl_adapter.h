@@ -28,11 +28,17 @@ public:
         std::vector<double> pointValues = tri->getPointValues();
         if (pointValues.size() != 6)
             throw std::string("Size of points is not correct in drawTriangle.");
+
         _sdl->renderDrawLines(&pointValues[0], 6);
     }
 
     void drawRectangle(Rectangle *rect) override
     {
+        std::vector<double> pointValues = rect->getPointValues();
+        if (pointValues.size() != 8)
+            throw std::string("Size of points is not correct in drawRectangle.");
+
+        _sdl->renderDrawLines(&pointValues[0], 8);
     }
 
     void display() override
