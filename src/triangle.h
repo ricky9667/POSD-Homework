@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cmath>
+#include <vector>
 #include "point.h"
 #include "two_dimensional_vector.h"
 #include "shape.h"
@@ -84,5 +85,16 @@ public:
     void accept(ShapeVisitor *visitor) override
     {
         visitor->visitTriangle(this);
+    }
+
+    std::vector<double> getPointValues()
+    {
+        std::vector<double> pointValues;
+        for (auto it : _points)
+        {
+            pointValues.push_back(it->x());
+            pointValues.push_back(it->y());
+        }
+        return pointValues;
     }
 };

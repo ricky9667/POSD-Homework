@@ -1,3 +1,4 @@
+#include <vector>
 #include "../point.h"
 #include "canvas.h"
 #include "sdl/sdl.h"
@@ -24,7 +25,10 @@ public:
 
     void drawTriangle(Triangle *tri) override
     {
-        
+        std::vector<double> pointValues = tri->getPointValues();
+        if (pointValues.size() != 6)
+            throw std::string("Size of points is not correct in drawTriangle.");
+        _sdl->renderDrawLines(&pointValues[0], 6);
     }
 
     void drawRectangle(Rectangle *rect) override
