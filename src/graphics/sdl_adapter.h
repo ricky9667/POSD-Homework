@@ -3,9 +3,16 @@
 
 class SDLAdapter : public Canvas
 {
+private:
+    SDL *_sdl;
+
 public:
-    SDLAdapter(int height, int width, SDL *sdl)
+    SDLAdapter(int width, int height, SDL *sdl) : _sdl{sdl}
     {
+        if (width <= 0 || height <= 0)
+            throw std::string("Cannot initialize with non-integer width or height.");
+
+        _sdl->init(width, height);
     }
 
     void drawCircle(Circle *cir) override
