@@ -17,25 +17,29 @@ private:
 
     void _calculatePoints()
     {
-        const Point *connectedPoint = nullptr;
+        const Point *commonPoint = _commonPoint();
         _points.insert(_lengthVec->a());
         _points.insert(_lengthVec->b());
-        if (_points.find(_widthVec->a()) != _points.end())
-            connectedPoint = _widthVec->a();
-        if (_points.find(_widthVec->b()) != _points.end())
-            connectedPoint = _widthVec->b();
         _points.insert(_widthVec->a());
         _points.insert(_widthVec->b());
 
         double x = 0, y = 0;
         for (auto point : _points)
         {
-            if (point == connectedPoint)
+            if (point == commonPoint)
                 x -= point->x(), y -= point->y();
             else
                 x += point->x(), y += point->y();
         }
         _points.insert(new Point(x, y));
+    }
+
+    const Point *_commonPoint() const
+    {
+        if (_lengthVec->a() == _widthVec->a() || _lengthVec->a() == _widthVec->b())
+            return _lengthVec->a();
+        else
+            return _lengthVec->b();
     }
 
 public:
