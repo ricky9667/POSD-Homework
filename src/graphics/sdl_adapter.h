@@ -43,5 +43,6 @@ public:
 
     void display() override
     {
+        _sdl->renderPresent();
     }
 };
