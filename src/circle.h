@@ -30,6 +30,11 @@ public:
         _calculatePoints();
     }
 
+    const Point *center() const
+    {
+        return _radiusVec->a();
+    }
+
     double radius()
     {
         return _radiusVec->length();
