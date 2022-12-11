@@ -96,41 +96,6 @@ public:
 
     std::vector<double> getPointValues()
     {
-        // std::vector<double> pointValues;
-        // const Point commonPoint = _commonPoint();
-
-        // pointValues.push_back(commonPoint.x());
-        // pointValues.push_back(commonPoint.y());
-
-        // if (_lengthVec.a() != commonPoint)
-        // {
-        //     pointValues.push_back(_lengthVec.a().x());
-        //     pointValues.push_back(_lengthVec.a().y());
-        // }
-        // else
-        // {
-        //     pointValues.push_back(_lengthVec.b().x());
-        //     pointValues.push_back(_lengthVec.b().y());
-        // }
-
-        // if (_widthVec.a() != commonPoint)
-        // {
-        //     pointValues.push_back(_widthVec.a().x());
-        //     pointValues.push_back(_widthVec.a().y());
-        // }
-        // else
-        // {
-        //     pointValues.push_back(_widthVec.b().x());
-        //     pointValues.push_back(_widthVec.b().y());
-        // }
-
-        // double x = pointValues[2] + pointValues[4] - pointValues[0];
-        // double y = pointValues[3] + pointValues[5] - pointValues[1];
-        // pointValues.push_back(x);
-        // pointValues.push_back(y);
-
-        // return pointValues;
-
         std::vector<double> pointValues;
         for (auto it : _points)
         {
