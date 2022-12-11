@@ -12,48 +12,47 @@
 class Circle : public Shape
 {
 private:
-    TwoDimensionalVector *_radiusVec;
-    std::set<const Point *> _points;
+    TwoDimensionalVector _radiusVec;
+    std::set<Point> _points;
 
     void _calculatePoints()
     {
-        double centerX = _radiusVec->a()->x(), centerY = _radiusVec->a()->y();
-        double length = _radiusVec->length();
-        _points.insert(new Point(centerX + length, centerY + length));
-        _points.insert(new Point(centerX - length, centerY - length));
+        double centerX = _radiusVec.a().x(), centerY = _radiusVec.a().y();
+        double length = _radiusVec.length();
+        _points.insert(Point(centerX + length, centerY + length));
+        _points.insert(Point(centerX - length, centerY - length));
     }
 
 public:
-    Circle(TwoDimensionalVector *radiusVec)
+    Circle(TwoDimensionalVector radiusVec) : _radiusVec{radiusVec}
     {
-        _radiusVec = radiusVec;
         _calculatePoints();
     }
 
-    const Point *center() const
+    const Point center() const
     {
-        return _radiusVec->a();
+        return _radiusVec.a();
     }
 
     double radius()
     {
-        return _radiusVec->length();
+        return _radiusVec.length();
     }
 
     double area() override
     {
-        double radius = _radiusVec->length();
+        double radius = _radiusVec.length();
         return M_PI * radius * radius;
     }
 
     double perimeter() override
     {
-        return 2.0 * M_PI * _radiusVec->length();
+        return 2.0 * M_PI * _radiusVec.length();
     }
 
     std::string info() override
     {
-        return "Circle (" + _radiusVec->info() + ")";
+        return "Circle (" + _radiusVec.info() + ")";
     }
 
     Iterator *createIterator(IteratorFactory *factory) override
@@ -61,7 +60,7 @@ public:
         return factory->createIterator();
     }
 
-    std::set<const Point *> getPoints() override
+    std::set<Point> getPoints() override
     {
         return _points;
     }

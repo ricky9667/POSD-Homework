@@ -6,8 +6,8 @@
 class Point
 {
 private:
-    const double _x;
-    const double _y;
+    double _x;
+    double _y;
 
     const std::string doubleToString(double value, int precision) const
     {
@@ -22,6 +22,13 @@ public:
     const bool operator==(const Point &other) const
     {
         return doubleToString(_x, 2) == doubleToString(other.x(), 2) && doubleToString(_y, 2) == doubleToString(other.y(), 2);
+    }
+
+    const bool operator<(const Point &other) const
+    {
+        if (_x == other.x())
+            return _y < other.y();
+        return _x < other.x();
     }
 
     const double x() const

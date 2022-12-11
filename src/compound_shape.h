@@ -82,9 +82,9 @@ public:
         }
     }
 
-    std::set<const Point *> getPoints() override
+    std::set<Point> getPoints() override
     {
-        std::set<const Point *> points;
+        std::set<Point> points;
         for (auto shape : _shapes)
             for (auto point : shape->getPoints())
                 points.insert(point);

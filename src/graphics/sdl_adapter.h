@@ -19,8 +19,8 @@ public:
 
     void drawCircle(Circle *cir) override
     {
-        const Point *center = cir->center();
-        _sdl->renderDrawCircle(center->x(), center->y(), cir->radius());
+        const Point center = cir->center();
+        _sdl->renderDrawCircle(center.x(), center.y(), cir->radius());
     }
 
     void drawTriangle(Triangle *tri) override

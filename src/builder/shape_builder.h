@@ -23,25 +23,25 @@ private:
     }
 
 public:
-    void buildCircle(const Point *center, const Point *to_radius)
+    void buildCircle(const Point center, const Point to_radius)
     {
-        Circle *circle = new Circle(new TwoDimensionalVector(center, to_radius));
+        Circle *circle = new Circle(TwoDimensionalVector(center, to_radius));
         _buildBasicShape(circle);
     }
 
-    void buildTriangle(const Point *common_point, const Point *v1_point, const Point *v2_point)
+    void buildTriangle(const Point common_point, const Point v1_point, const Point v2_point)
     {
         Triangle *triangle = new Triangle(
-            new TwoDimensionalVector(common_point, v1_point),
-            new TwoDimensionalVector(common_point, v2_point));
+            TwoDimensionalVector(common_point, v1_point),
+            TwoDimensionalVector(common_point, v2_point));
         _buildBasicShape(triangle);
     }
 
-    void buildRectangle(const Point *common_point, const Point *v1_point, const Point *v2_point)
+    void buildRectangle(const Point common_point, const Point v1_point, const Point v2_point)
     {
         Rectangle *rectangle = new Rectangle(
-            new TwoDimensionalVector(common_point, v1_point),
-            new TwoDimensionalVector(common_point, v2_point));
+            TwoDimensionalVector(common_point, v1_point),
+            TwoDimensionalVector(common_point, v2_point));
         _buildBasicShape(rectangle);
     }
 

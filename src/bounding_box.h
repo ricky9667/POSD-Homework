@@ -9,69 +9,69 @@
 class BoundingBox
 {
 private:
-    Point *_max;
-    Point *_min;
+    Point _max;
+    Point _min;
 
 public:
-    BoundingBox(std::set<const Point *> points)
+    BoundingBox(std::set<Point> points) : _max{Point(0, 0)}, _min{Point(0, 0)}
     {
         _max = calMaximumPoint(points);
         _min = calMinimumPoint(points);
     }
 
-    Point *calMaximumPoint(const std::set<const Point *> points)
+    Point calMaximumPoint(const std::set<Point> points)
     {
         if (points.size() <= 0)
             throw std::string("Cannot initialize BoundingBox with an empty set of points.");
 
-        std::set<const Point *>::iterator it = points.begin();
-        double maxPointX = (*it)->x(), maxPointY = (*it)->y();
+        std::set<Point>::iterator it = points.begin();
+        double maxPointX = (*it).x(), maxPointY = (*it).y();
         for (it++; it != points.end(); it++)
         {
-            double x = (*it)->x(), y = (*it)->y();
+            double x = (*it).x(), y = (*it).y();
             maxPointX = (x > maxPointX) ? x : maxPointX;
             maxPointY = (y > maxPointY) ? y : maxPointY;
         }
 
-        return new Point(maxPointX, maxPointY);
+        return Point(maxPointX, maxPointY);
     }
 
-    Point *calMinimumPoint(const std::set<const Point *> points)
+    Point calMinimumPoint(const std::set<Point> points)
     {
         if (points.size() <= 0)
             throw std::string("Cannot initialize BoundingBox with an empty set of points.");
 
-        std::set<const Point *>::iterator it = points.begin();
-        double minPointX = (*it)->x(), minPointY = (*it)->y();
+        std::set<Point>::iterator it = points.begin();
+        double minPointX = (*it).x(), minPointY = (*it).y();
         for (it++; it != points.end(); it++)
         {
-            double x = (*it)->x(), y = (*it)->y();
+            double x = (*it).x(), y = (*it).y();
             minPointX = (x < minPointX) ? x : minPointX;
             minPointY = (y < minPointY) ? y : minPointY;
         }
 
-        return new Point(minPointX, minPointY);
+        return Point(minPointX, minPointY);
     }
 
-    const Point *max()
+    const Point max()
     {
         return _max;
     }
 
-    const Point *min()
+    const Point min()
     {
         return _min;
     }
 
     bool collide(BoundingBox *box)
     {
-        return !(_max->x() < box->min()->x() || _min->x() > box->max()->x() || _max->y() < box->min()->y() || _min->y() > box->max()->y());
+        return !(_max.x() < box->min().x() || _min.x() > box->max().x() || _max.y() < box->min().y() || _min.y() > box->max().y());
     }
 
     double distance(BoundingBox *box)
     {
-        TwoDimensionalVector *maxPointVector = new TwoDimensionalVector(_max, box->max());
-        TwoDimensionalVector *minPointVector = new TwoDimensionalVector(_min, box->min());
-        return maxPointVector->length() + minPointVector->length();
+        TwoDimensionalVector maxPointVector = TwoDimensionalVector(_max, box->max());
+        TwoDimensionalVector minPointVector = TwoDimensionalVector(_min, box->min());
+        return maxPointVector.length() + minPointVector.length();
     }
 };

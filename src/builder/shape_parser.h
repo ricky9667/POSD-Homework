@@ -50,7 +50,7 @@ private:
         }
     }
 
-    std::pair<Point *, Point *> _parseVectorWithPoints()
+    std::pair<Point, Point> _parseVectorWithPoints()
     {
         std::string token = _scanner->next();
         if (token != "Vector")
@@ -78,13 +78,13 @@ private:
 
         _parseRightParenthesis();
 
-        return std::make_pair(new Point(x1, y1), new Point(x2, y2));
+        return std::make_pair(Point(x1, y1), Point(x2, y2));
     }
 
     void _parseCircle()
     {
         _parseLeftParenthesis();
-        std::pair<Point *, Point *> vectorPoints = _parseVectorWithPoints();
+        std::pair<Point, Point> vectorPoints = _parseVectorWithPoints();
         _parseRightParenthesis();
         _builder->buildCircle(vectorPoints.first, vectorPoints.second);
     }
@@ -92,18 +92,18 @@ private:
     void _parseTriangle()
     {
         _parseLeftParenthesis();
-        std::pair<Point *, Point *> v1Points = _parseVectorWithPoints();
+        std::pair<Point, Point> v1Points = _parseVectorWithPoints();
         _parseComma();
-        std::pair<Point *, Point *> v2Points = _parseVectorWithPoints();
+        std::pair<Point, Point> v2Points = _parseVectorWithPoints();
         _parseRightParenthesis();
 
-        if (*(v1Points.first) == *(v2Points.first))
+        if (v1Points.first == v2Points.first)
             _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.second);
-        else if (*(v1Points.first) == *(v2Points.second))
+        else if (v1Points.first == v2Points.second)
             _builder->buildTriangle(v1Points.first, v1Points.second, v2Points.first);
-        else if (*(v1Points.second) == *(v2Points.first))
+        else if (v1Points.second == v2Points.first)
             _builder->buildTriangle(v1Points.second, v1Points.first, v2Points.second);
-        else if (*(v1Points.second) == *(v2Points.second))
+        else if (v1Points.second == v2Points.second)
             _builder->buildTriangle(v1Points.second, v1Points.first, v2Points.first);
         else
         {
@@ -115,18 +115,18 @@ private:
     void _parseRectangle()
     {
         _parseLeftParenthesis();
-        std::pair<Point *, Point *> lengthPoints = _parseVectorWithPoints();
+        std::pair<Point, Point> lengthPoints = _parseVectorWithPoints();
         _parseComma();
-        std::pair<Point *, Point *> widthPoints = _parseVectorWithPoints();
+        std::pair<Point, Point> widthPoints = _parseVectorWithPoints();
         _parseRightParenthesis();
 
-        if (*(lengthPoints.first) == *(widthPoints.first))
+        if (lengthPoints.first == widthPoints.first)
             _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.second);
-        else if (*(lengthPoints.first) == *(widthPoints.second))
+        else if (lengthPoints.first == widthPoints.second)
             _builder->buildRectangle(lengthPoints.first, lengthPoints.second, widthPoints.first);
-        else if (*(lengthPoints.second) == *(widthPoints.first))
+        else if (lengthPoints.second == widthPoints.first)
             _builder->buildRectangle(lengthPoints.second, lengthPoints.first, widthPoints.second);
-        else if (*(lengthPoints.second) == *(widthPoints.second))
+        else if (lengthPoints.second == widthPoints.second)
             _builder->buildRectangle(lengthPoints.second, lengthPoints.first, widthPoints.first);
         else
         {
