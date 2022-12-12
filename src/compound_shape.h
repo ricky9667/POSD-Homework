@@ -2,6 +2,7 @@
 
 #include <list>
 #include <set>
+#include <algorithm>
 #include "point.h"
 #include "two_dimensional_vector.h"
 #include "shape.h"
@@ -13,11 +14,19 @@ class CompoundShape : public Shape
 {
 private:
     std::list<Shape *> _shapes;
+    std::list<Shape *> _shouldBeDeletedShapes;
 
 public:
     CompoundShape(Shape **shapes, int size) : _shapes(shapes, shapes + size) {}
 
-    ~CompoundShape() {}
+    ~CompoundShape()
+    {
+        for (auto shape : _shapes)
+            delete shape;
+
+        for (auto shape : _shouldBeDeletedShapes)
+            delete shape;
+    }
 
     double area() override
     {
@@ -69,7 +78,12 @@ public:
 
     void deleteShape(Shape *shape) override
     {
-        _shapes.remove(shape);
+        if (std::find(_shapes.begin(), _shapes.end(), shape) != _shapes.end())
+        {
+            _shapes.remove(shape);
+            _shouldBeDeletedShapes.push_back(shape);
+        }
+
         for (auto it : _shapes)
         {
             try

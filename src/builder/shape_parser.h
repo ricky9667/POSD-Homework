@@ -142,7 +142,11 @@ public:
         _builder = new ShapeBuilder();
     }
 
-    ~ShapeParser() {}
+    ~ShapeParser()
+    {
+        delete _scanner;
+        delete _builder;
+    }
 
     void parse()
     {

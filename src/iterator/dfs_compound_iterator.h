@@ -3,7 +3,7 @@
 #include <vector>
 #include "../shape.h"
 #include "iterator.h"
-#include "factory/dfs_iterator_factory.h"
+#include "factory/iterator_factory.h"
 
 class CompoundShape;
 
@@ -20,11 +20,12 @@ public:
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++)
         {
             _shapes.push_back(*parentIterator);
-            Iterator *childIterator = (*parentIterator)->createIterator(new DFSIteratorFactory());
+            Iterator *childIterator = (*parentIterator)->createIterator(IteratorFactory::getInstance("DFS"));
             for (; !childIterator->isDone(); childIterator->next())
             {
                 _shapes.push_back(childIterator->currentItem());
             }
+            delete childIterator;
         }
 
         first();

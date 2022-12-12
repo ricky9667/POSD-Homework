@@ -3,7 +3,7 @@
 #include <vector>
 #include "../shape.h"
 #include "iterator.h"
-#include "factory/bfs_iterator_factory.h"
+#include "factory/iterator_factory.h"
 
 class CompoundShape;
 
@@ -22,7 +22,7 @@ public:
         for (ForwardIterator parentIterator = begin; parentIterator != end; parentIterator++)
         {
             _shapes.push_back(*parentIterator);
-            Iterator *childIterator = (*parentIterator)->createIterator(new BFSIteratorFactory());
+            Iterator *childIterator = (*parentIterator)->createIterator(IteratorFactory::getInstance("BFS"));
             childIterators.push_back(childIterator);
         }
 
@@ -33,6 +33,7 @@ public:
             {
                 _shapes.push_back(it->currentItem());
             }
+            delete it;
         }
 
         first();

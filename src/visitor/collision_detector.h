@@ -7,7 +7,7 @@
 #include "../rectangle.h"
 #include "../compound_shape.h"
 #include "../bounding_box.h"
-#include "../iterator/factory/list_iterator_factory.h"
+#include "../iterator/factory/iterator_factory.h"
 
 class CollisionDetector : public ShapeVisitor
 {
@@ -21,11 +21,18 @@ public:
         _targetBoundingBox = new BoundingBox(shape->getPoints());
     }
 
+    ~CollisionDetector()
+    {
+        delete _targetBoundingBox;
+    }
+
     void visitCircle(Circle *circle) override
     {
         BoundingBox *circleBoundingBox = new BoundingBox(circle->getPoints());
         if (_targetBoundingBox->collide(circleBoundingBox))
             _collideResult.push_back(circle);
+
+        delete circleBoundingBox;
     }
 
     void visitTriangle(Triangle *triangle) override
@@ -33,6 +40,8 @@ public:
         BoundingBox *triangleBoundingBox = new BoundingBox(triangle->getPoints());
         if (_targetBoundingBox->collide(triangleBoundingBox))
             _collideResult.push_back(triangle);
+
+        delete triangleBoundingBox;
     }
 
     void visitRectangle(Rectangle *rectangle) override
@@ -40,16 +49,20 @@ public:
         BoundingBox *rectangleBoundingBox = new BoundingBox(rectangle->getPoints());
         if (_targetBoundingBox->collide(rectangleBoundingBox))
             _collideResult.push_back(rectangle);
+
+        delete rectangleBoundingBox;
     }
 
     void visitCompoundShape(CompoundShape *compoundShape) override
     {
-        Iterator *iterator = compoundShape->createIterator(new ListIteratorFactory());
+        Iterator *iterator = compoundShape->createIterator(IteratorFactory::getInstance("List"));
         for (; !iterator->isDone(); iterator->next())
         {
             Shape *currentShape = iterator->currentItem();
             currentShape->accept(this);
         }
+
+        delete iterator;
     }
 
     std::vector<Shape *> collidedShapes() const
