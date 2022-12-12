@@ -83,13 +83,16 @@ TEST_F(SDLAdapterTest, renderDrawLinesCalledArgsShouldBeCorrectForNonRotatedRect
     std::set<Point> points = rectangle->getPoints();
     const double *calledPoints = mockSDLRenderer->renderDrawLinesCalledPoints();
 
-    ASSERT_EQ(8, mockSDLRenderer->renderDrawLinesCalledSize());
     int index = 0;
+    const int xs[4] = {0, 2, 6, 4};
+    const int ys[4] = {1, 3, 7, 5};
+    ASSERT_EQ(8, mockSDLRenderer->renderDrawLinesCalledSize());
     for (auto point : points)
     {
-        ASSERT_NEAR(calledPoints[index], point.x(), 0.001);
-        ASSERT_NEAR(calledPoints[index + 1], point.y(), 0.001);
-        index += 2;
+        int x = xs[index], y = ys[index];
+        ASSERT_NEAR(calledPoints[x], point.x(), 0.001);
+        ASSERT_NEAR(calledPoints[y], point.y(), 0.001);
+        index++;
     }
 
     delete rectangle;
@@ -111,13 +114,16 @@ TEST_F(SDLAdapterTest, renderDrawLinesCalledArgsShouldBeCorrectForRotatedRect)
     std::set<Point> points = rectangle->getPoints();
     const double *calledPoints = mockSDLRenderer->renderDrawLinesCalledPoints();
 
-    ASSERT_EQ(8, mockSDLRenderer->renderDrawLinesCalledSize());
     int index = 0;
+    const int xs[4] = {0, 2, 6, 4};
+    const int ys[4] = {1, 3, 7, 5};
+    ASSERT_EQ(8, mockSDLRenderer->renderDrawLinesCalledSize());
     for (auto point : points)
     {
-        ASSERT_NEAR(calledPoints[index], point.x(), 0.001);
-        ASSERT_NEAR(calledPoints[index + 1], point.y(), 0.001);
-        index += 2;
+        int x = xs[index], y = ys[index];
+        ASSERT_NEAR(calledPoints[x], point.x(), 0.001);
+        ASSERT_NEAR(calledPoints[y], point.y(), 0.001);
+        index++;
     }
 
     delete rectangle;

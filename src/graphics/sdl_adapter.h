@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include "../point.h"
 #include "canvas.h"
@@ -45,6 +46,11 @@ public:
 
         double *pointsArray = new double[rectanglePointsSize];
         std::copy(pointValues.begin(), pointValues.end(), pointsArray);
+
+        // stupid swap
+        std::swap(pointsArray[4], pointsArray[6]);
+        std::swap(pointsArray[5], pointsArray[7]);
+
         _sdl->renderDrawLines(pointsArray, rectanglePointsSize);
     }
 
