@@ -10,11 +10,20 @@ IteratorFactory *IteratorFactory::getInstance(std::string name)
     if (_instances.find(name) == _instances.end())
     {
         if (name == "DFS")
-            _instances[name] = new DFSIteratorFactory();
+        {
+            static DFSIteratorFactory factory = DFSIteratorFactory();
+            _instances[name] = &factory;
+        }
         else if (name == "BFS")
-            _instances[name] = new BFSIteratorFactory();
+        {
+            static BFSIteratorFactory factory = BFSIteratorFactory();
+            _instances[name] = &factory;
+        }
         else if (name == "List")
-            _instances[name] = new ListIteratorFactory();
+        {
+            static ListIteratorFactory factory = ListIteratorFactory();
+            _instances[name] = &factory;
+        }
     }
     return _instances[name];
 }
