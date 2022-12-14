@@ -10,13 +10,34 @@ private:
 
 public:
     MacroCommand() {}
-    ~MacroCommand() {}
 
-    void execute() override {}
+    ~MacroCommand()
+    {
+        for (auto command : _commands)
+            delete command;
+    }
 
-    void addCommand(Command *command) override {}
+    void execute() override
+    {
+        std::vector<Command *>::iterator it;
+        for (it = _commands.begin(); it != _commands.end(); it++)
+            (*it)->execute();
+    }
 
-    void undo() override {}
+    void addCommand(Command *command) override
+    {
+        _commands.push_back(command);
+    }
 
-    std::vector<Command *> getCommands() override {}
+    void undo() override
+    {
+        std::vector<Command *>::reverse_iterator it;
+        for (it = _commands.rbegin(); it != _commands.rend(); it++)
+            (*it)->undo();
+    }
+
+    std::vector<Command *> getCommands() override
+    {
+        return _commands;
+    }
 };

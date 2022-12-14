@@ -13,14 +13,38 @@ private:
     double _x, _y;
 
 public:
-    MoveCommand(DragAndDrop *dragAndDrop, CommandHistory *commandHistory) {}
-    MoveCommand(const MoveCommand &moveCommand) {} // copy constructor
+    MoveCommand(DragAndDrop *dragAndDrop, CommandHistory *commandHistory) : _dragAndDrop{dragAndDrop}, _commandHistory{commandHistory}
+    {
+        MousePosition *mousePosition = MousePosition::getInstance();
+        _x = mousePosition->getX();
+        _y = mousePosition->getY();
+    }
 
-    void execute() override {}
+    MoveCommand(const MoveCommand &command)
+    {
+        _dragAndDrop = command._dragAndDrop;
+        _commandHistory = command._commandHistory;
+        _x = command._x;
+        _y = command._y;
+    }
 
-    void undo() override {}
+    void execute() override
+    {
+        _dragAndDrop->move(_x, _y);
+    }
 
-    double getX() const {}
+    void undo() override
+    {
+        _dragAndDrop->move(_x, _y); // not sure
+    }
 
-    double getY() const {}
+    double getX() const
+    {
+        return _x;
+    }
+
+    double getY() const
+    {
+        return _y;
+    }
 };

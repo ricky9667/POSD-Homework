@@ -13,15 +13,42 @@ private:
 
 public:
     CommandHistory() {}
+
     ~CommandHistory() {}
 
-    void beginMacroCommand() {}
+    void beginMacroCommand()
+    {
+        inMacro = true;
+        _history.push(new MacroCommand());
+    }
 
-    void addCommand(Command *command) {}
+    void addCommand(Command *command)
+    {
+        if (inMacro)
+        {
+            MacroCommand *macroCommand = dynamic_cast<MacroCommand *>(_history.top());
+            macroCommand->addCommand(command);
+        }
+        _history.push(command);
+    }
 
-    void endMacroCommand() {}
+    void endMacroCommand()
+    {
+        inMacro = false;
+    }
 
-    void undo() {}
+    void undo()
+    {
+        if (_history.empty())
+            return;
 
-    std::stack<Command *> getHistory() {}
+        Command *command = _history.top();
+        _history.pop();
+        _undoCommands.push(command);
+    }
+
+    std::stack<Command *> getHistory()
+    {
+        return _history;
+    }
 };

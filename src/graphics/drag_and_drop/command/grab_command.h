@@ -13,14 +13,41 @@ private:
     double _x, _y;
 
 public:
-    GrabCommand(DragAndDrop *dragAndDrop, CommandHistory *commandHistory) {}
-    GrabCommand(const GrabCommand &grabCommand) {} // copy constructor
+    GrabCommand(DragAndDrop *dragAndDrop, CommandHistory *commandHistory) : _dragAndDrop{dragAndDrop}, _commandHistory{commandHistory}
+    {
+        MousePosition *mousePosition = MousePosition::getInstance();
+        _x = mousePosition->getX();
+        _y = mousePosition->getY();
+    }
 
-    void execute() override {}
+    GrabCommand(const GrabCommand &command)
+    {
+        _dragAndDrop = command._dragAndDrop;
+        _commandHistory = command._commandHistory;
+        _x = command._x;
+        _y = command._y;
+    }
 
-    void undo() override {}
+    void execute() override
+    {
+        _dragAndDrop->grab(_x, _y);
+        _commandHistory->beginMacroCommand();
+        _commandHistory->addCommand(new GrabCommand(this));
+    }
 
-    double getX() const {}
+    void undo() override
+    {
+        _dragAndDrop->move(_x, _y);
+        _dragAndDrop->drop(_x, _y);
+    }
 
-    double getY() const {}
+    double getX() const
+    {
+        return _x;
+    }
+
+    double getY() const
+    {
+        return _y;
+    }
 };

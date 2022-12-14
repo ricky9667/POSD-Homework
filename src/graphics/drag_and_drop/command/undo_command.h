@@ -12,9 +12,16 @@ private:
     CommandHistory *_commandHistory;
 
 public:
-    UndoCommand(DragAndDrop *dragAndDrop, CommandHistory *commandHistory) {}
+    UndoCommand(DragAndDrop *dragAndDrop, CommandHistory *commandHistory) : _dragAndDrop{dragAndDrop}, _commandHistory{commandHistory} {}
 
-    void execute() override {}
+    void execute() override
+    {
+        Command *command = _commandHistory->getHistory().top();
+        command->undo();
+    }
 
-    void undo() override {}
+    void undo() override
+    {
+        // intentionally left blank
+    }
 };
