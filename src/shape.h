@@ -17,6 +17,7 @@ public:
     virtual Iterator *createIterator(IteratorFactory *factory) = 0;
     virtual std::set<Point> getPoints() = 0;
     virtual void accept(ShapeVisitor *visitor) = 0;
+    virtual void move(double deltaX, double deltaY) = 0;
 
     virtual void addShape(Shape *shape)
     {

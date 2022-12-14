@@ -6,8 +6,8 @@
 class TwoDimensionalVector
 {
 private:
-    const Point _a;
-    const Point _b;
+    Point _a;
+    Point _b;
 
 public:
     TwoDimensionalVector(const Point a, const Point b) : _a{a}, _b{b} {}
@@ -55,5 +55,11 @@ public:
     const std::string info() const
     {
         return "Vector (" + _a.info() + ", " + _b.info() + ")";
+    }
+
+    void move(double deltaX, double deltaY)
+    {
+        _a.move(deltaX, deltaY);
+        _b.move(deltaX, deltaY);
     }
 };

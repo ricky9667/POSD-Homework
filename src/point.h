@@ -47,4 +47,10 @@ public:
         std::string strY = doubleToString(_y, 2);
         return "(" + strX + ", " + strY + ")";
     }
+
+    void move(double deltaX, double deltaY)
+    {
+        _x += deltaX;
+        _y += deltaY;
+    }
 };

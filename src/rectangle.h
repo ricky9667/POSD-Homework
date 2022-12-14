@@ -104,4 +104,10 @@ public:
         }
         return pointValues;
     }
+
+    void move(double deltaX, double deltaY) override
+    {
+        _lengthVec.move(deltaX, deltaY);
+        _widthVec.move(deltaX, deltaY);
+    }
 };

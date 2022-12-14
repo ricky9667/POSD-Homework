@@ -69,4 +69,9 @@ public:
     {
         visitor->visitCircle(this);
     }
+
+    void move(double deltaX, double deltaY) override
+    {
+        _radiusVec.move(deltaX, deltaY);
+    }
 };

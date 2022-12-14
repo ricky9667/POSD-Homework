@@ -33,24 +33,22 @@ int main(int argc, char *args[])
     parser.parse();
     std::vector<Shape *> shapes = parser.getResult();
 
-    SDL *renderer = new SDLRenderer(30);                  // Adaptee
+    EventListener *eventListener = new EventListener();
+    SDL *renderer = new SDLRenderer(30, eventListener);   // Adaptee
     Canvas *canvas = new SDLAdapter(1024, 768, renderer); // Adapter
-    ShapePrinter printer(canvas);
-    for (std::vector<Shape *>::iterator it = shapes.begin(); it != shapes.end(); it++)
-    {
-        Iterator *sit = (*it)->createIterator(IteratorFactory::getInstance("DFS"));
-        if (sit->isDone()) // could be a Leaf shape
-        {
-            (*it)->accept(&printer);
-        }
-        else // is a CompoundShape
-        {
-            for (; !sit->isDone(); sit->next())
-                sit->currentItem()->accept(&printer);
-        }
-    }
+
+    DragAndDrop *dragAndDrop = new DragAndDrop(shapes);
+    CommandHistory *commandHistory = new CommandHistory();
+    eventListener->on("Left_Mouse_Down", new GrabCommand(dragAndDrop, commandHistory));
+    eventListener->on("Left_Mouse_Move", new MoveCommand(dragAndDrop, commandHistory));
+    eventListener->on("Left_Mouse_Up", new DropCommand(dragAndDrop, commandHistory));
+    eventListener->on("Right_Mouse_Down", new UndoCommand(dragAndDrop, commandHistory));
+    eventListener->on("Refresh", new RefreshCommand(canvas, shapes));
     canvas->display();
 
+    for (std::vector<Shape *>::iterator it = shapes.begin(); it != shapes.end(); it++)
+        delete (*it);
+    delete eventListener;
     delete renderer;
     delete canvas;
 }

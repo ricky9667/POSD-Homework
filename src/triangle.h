@@ -95,4 +95,10 @@ public:
         }
         return pointValues;
     }
+
+    void move(double deltaX, double deltaY) override
+    {
+        _v1.move(deltaX, deltaY);
+        _v2.move(deltaX, deltaY);
+    }
 };

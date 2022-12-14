@@ -122,4 +122,10 @@ public:
             }
         }
     }
+
+    void move(double deltaX, double deltaY) override
+    {
+        for (std::list<Shape *>::const_iterator it = _shapes.begin(); it != _shapes.end(); ++it)
+            (*it)->move(deltaX, deltaY);
+    }
 };
