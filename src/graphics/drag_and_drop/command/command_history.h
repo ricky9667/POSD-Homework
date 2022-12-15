@@ -14,7 +14,20 @@ private:
 public:
     CommandHistory() {}
 
-    ~CommandHistory() {}
+    ~CommandHistory()
+    {
+        while (!_history.empty())
+        {
+            delete _history.top();
+            _history.pop();
+        }
+
+        while (!_undoCommands.empty())
+        {
+            delete _undoCommands.top();
+            _undoCommands.pop();
+        }
+    }
 
     void beginMacroCommand()
     {
