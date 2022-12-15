@@ -48,31 +48,5 @@ public:
     double getY() const
     {
         return _y;
-
-        double getX() const
-        {
-            return _x;
-        }
-
-        double getY() const
-        {
-            return _y;
-
-            double getX() const
-            {
-                return _x;
-            }
-
-            double getY() const
-            {
-                return _y;
-
-                double getX() const
-                {
-                    return _x;
-                }
-
-                double getY() const
-                {
-                    return _y;
-                };
+    }
+};
