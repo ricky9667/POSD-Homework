@@ -16,6 +16,9 @@ public:
 
     void execute() override
     {
+        if (_commandHistory->getHistory().empty())
+            throw std::string("Unable to undo because there are no commands in history.");
+
         Command *command = _commandHistory->getHistory().top();
         command->undo();
     }
