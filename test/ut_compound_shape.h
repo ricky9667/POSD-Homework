@@ -142,8 +142,7 @@ TEST_F(CompoundShapeTest, DeleteInnerShapeCorrectly)
 
 TEST_F(CompoundShapeTest, DFSIteratorShouldBeCorrect)
 {
-    Iterator *it;
-    ASSERT_NO_THROW(it = cs3->createIterator(IteratorFactory::getInstance("DFS")));
+    Iterator *it = cs3->createIterator(IteratorFactory::getInstance("DFS"));
     ASSERT_FALSE(it->isDone());
 
     ASSERT_NEAR(5 * 5 * M_PI + 25, it->currentItem()->area(), 0.001);
@@ -164,8 +163,7 @@ TEST_F(CompoundShapeTest, DFSIteratorShouldBeCorrect)
 
 TEST_F(CompoundShapeTest, BFSIteratorShouldBeCorrect)
 {
-    Iterator *it;
-    ASSERT_NO_THROW(it = cs3->createIterator(IteratorFactory::getInstance("BFS")));
+    Iterator *it = cs3->createIterator(IteratorFactory::getInstance("BFS"));
     ASSERT_FALSE(it->isDone());
 
     ASSERT_NEAR(5 * 5 * M_PI + 25, it->currentItem()->area(), 0.001);
