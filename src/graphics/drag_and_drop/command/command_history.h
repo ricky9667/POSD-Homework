@@ -44,6 +44,7 @@ public:
             return;
 
         Command *command = _history.top();
+        command->undo();
         _history.pop();
         _undoCommands.push(command);
     }
