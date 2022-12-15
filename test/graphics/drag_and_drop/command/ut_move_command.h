@@ -32,6 +32,8 @@ TEST_F(MoveCommandTest, GetCoordinatedShouldWorkExpectedly)
 
     ASSERT_NEAR(mousePosition->getX(), command->getX(), 0.001);
     ASSERT_NEAR(mousePosition->getY(), command->getY(), 0.001);
+
+    delete command;
 }
 
 TEST_F(MoveCommandTest, ExecuteShouldWorkExpectedly)
@@ -42,6 +44,8 @@ TEST_F(MoveCommandTest, ExecuteShouldWorkExpectedly)
     ASSERT_NO_THROW(command->execute());
     ASSERT_NEAR(mousePosition->getX(), mockDragAndDrop->getMoveX(), 0.001);
     ASSERT_NEAR(mousePosition->getY(), mockDragAndDrop->getMoveY(), 0.001);
+
+    delete command;
 }
 
 TEST_F(MoveCommandTest, UndoShouldWorkExpectedly)
@@ -52,4 +56,6 @@ TEST_F(MoveCommandTest, UndoShouldWorkExpectedly)
     ASSERT_NO_THROW(command->undo());
     ASSERT_NEAR(mousePosition->getX(), mockDragAndDrop->getMoveX(), 0.001);
     ASSERT_NEAR(mousePosition->getY(), mockDragAndDrop->getMoveY(), 0.001);
+
+    delete command;
 }
