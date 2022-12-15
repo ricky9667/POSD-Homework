@@ -32,7 +32,7 @@ public:
     {
         _dragAndDrop->grab(_x, _y);
         _commandHistory->beginMacroCommand();
-        _commandHistory->addCommand(new GrabCommand(this));
+        _commandHistory->addCommand(new GrabCommand(*this));
     }
 
     void undo() override

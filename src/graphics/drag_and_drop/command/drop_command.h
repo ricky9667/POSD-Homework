@@ -31,7 +31,7 @@ public:
     void execute() override
     {
         _dragAndDrop->drop(_x, _y);
-        _commandHistory->addCommand(new DropCommand(this));
+        _commandHistory->addCommand(new DropCommand(*this));
         _commandHistory->endMacroCommand();
     }
 
