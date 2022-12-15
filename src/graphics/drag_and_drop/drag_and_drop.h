@@ -17,8 +17,10 @@ private:
 
 public:
     DragAndDrop() {}
+    
     DragAndDrop(std::vector<Shape *> shapes) : _shapes(shapes) {}
-    ~DragAndDrop() {}
+    
+    virtual ~DragAndDrop() {}
 
     virtual void grab(double x, double y)
     {
