@@ -27,6 +27,7 @@
 #include "graphics/drag_and_drop/command/ut_move_command.h"
 #include "graphics/drag_and_drop/command/ut_drop_command.h"
 #include "graphics/drag_and_drop/command/ut_macro_command.h"
+#include "graphics/drag_and_drop/command/ut_undo_command.h"
 
 int main(int argc, char **argv)
 {
