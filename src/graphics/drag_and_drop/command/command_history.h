@@ -29,7 +29,8 @@ public:
             MacroCommand *macroCommand = dynamic_cast<MacroCommand *>(_history.top());
             macroCommand->addCommand(command);
         }
-        _history.push(command);
+        else
+            _history.push(command);
     }
 
     void endMacroCommand()
