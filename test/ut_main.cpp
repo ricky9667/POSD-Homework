@@ -25,6 +25,7 @@
 #include "graphics/mock_sdl_renderer.h"
 #include "graphics/drag_and_drop/command/ut_grab_command.h"
 #include "graphics/drag_and_drop/command/ut_move_command.h"
+#include "graphics/drag_and_drop/command/ut_drop_command.h"
 
 int main(int argc, char **argv)
 {
