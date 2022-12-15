@@ -35,6 +35,8 @@ TEST_F(UndoCommandTest, ExecuteShouldWorkExpectedly)
     commandHistory->addCommand(mockCommand);
     undoCommand->execute();
     ASSERT_TRUE(mockCommand->isUndoCalled());
+
+    delete undoCommand;
 }
 
 TEST_F(UndoCommandTest, ExecuteShouldThrowExceptionIfHistoryIsEmpty)
@@ -42,4 +44,6 @@ TEST_F(UndoCommandTest, ExecuteShouldThrowExceptionIfHistoryIsEmpty)
     UndoCommand *undoCommand = new UndoCommand(mockDragAndDrop, commandHistory);
 
     ASSERT_ANY_THROW(undoCommand->execute());
+
+    delete undoCommand;
 }
